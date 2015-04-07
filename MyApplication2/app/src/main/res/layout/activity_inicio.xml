@@ -10,7 +10,7 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
-        android:layout_weight="0.5"
+        android:layout_weight="0.4"
         android:orientation="horizontal">
         <Button
             android:layout_width="0dp"
@@ -28,7 +28,7 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
-        android:layout_weight="0.5"
+        android:layout_weight="0.4"
         android:orientation="horizontal">
     <Button
         android:layout_width="0dp"
@@ -43,6 +43,9 @@
         android:text="@string/evaluation"/>
 
     </LinearLayout>
-
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    android:background="@color/blue"/>
 
 </LinearLayout>
