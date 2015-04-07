@@ -4,5 +4,9 @@
     <string name="app_name">MyStudySchedule</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="horary">Horario</string>
+    <string name="subjects">Asignaturas</string>
+    <string name="Tasks">Tareas</string>
+    <string name="evaluation">Evaluación</string>
 
 </resources>
