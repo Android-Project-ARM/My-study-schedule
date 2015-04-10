@@ -15,14 +15,16 @@
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            android:text="@string/horary"/>
+            android:layout_weight="0.4"
+            android:text="@string/horary"
+            android:id="@+id/horaryButton"/>
 
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            android:text="@string/subjects"/>
+            android:layout_weight="0.4"
+            android:text="@string/subjects"
+            android:id="@+id/subjectsButton"/>
         </LinearLayout>
 
     <LinearLayout
@@ -33,19 +35,18 @@
     <Button
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="0.5"
-        android:text="@string/Tasks"/>
+        android:layout_weight="0.4"
+        android:text="@string/Tasks"
+        android:id="@+id/tasksButton"/>
 
     <Button
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="0.5"
-        android:text="@string/evaluation"/>
+        android:layout_weight="0.4"
+        android:text="@string/evaluation"
+        android:id="@+id/evaluationButton"/>
 
     </LinearLayout>
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="56dp"
-    android:background="@color/blue"/>
+
 
 </LinearLayout>

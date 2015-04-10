@@ -8,5 +8,12 @@
     <string name="subjects">Asignaturas</string>
     <string name="Tasks">Tareas</string>
     <string name="evaluation">Evaluación</string>
+    <string name="title_activity_ajustes">Ajustes</string>
+    <string name="title_activity_horario">Horario</string>
+    <string name="title_activity_asignaturas">Asignaturas</string>
+    <string name="title_activity_tareas">Tareas</string>
+    <string name="title_activity_evaluacion">Evaluacion</string>
+    <string name="title_activity_detalle_asignatura">DetalleAsignatura</string>
+    <string name="title_activity_nueva_asignatura">NuevaAsignatura</string>
 
 </resources>

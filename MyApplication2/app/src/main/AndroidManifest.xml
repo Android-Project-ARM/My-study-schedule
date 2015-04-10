@@ -16,6 +16,40 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Ajustes"
+            android:label="@string/title_activity_ajustes"
+            android:parentActivityName=".Inicio" >
+        </activity>
+        <activity
+            android:name=".Horario"
+            android:label="@string/title_activity_horario"
+            android:parentActivityName=".Inicio" >
+        </activity>
+        <activity
+            android:name=".Asignaturas"
+            android:label="@string/title_activity_asignaturas"
+            android:parentActivityName=".Inicio" >
+        </activity>
+        <activity
+            android:name=".Tareas"
+            android:label="@string/title_activity_tareas"
+            android:parentActivityName=".Inicio" >
+        </activity>
+        <activity
+            android:name=".Evaluacion"
+            android:label="@string/title_activity_evaluacion"
+            android:parentActivityName=".Inicio" >
+        </activity>
+        <activity
+            android:name=".DetalleAsignatura"
+            android:label="@string/title_activity_detalle_asignatura"
+            android:parentActivityName=".Asignaturas" >
+        </activity>
+        <activity
+            android:name=".NuevaAsignatura"
+            android:label="@string/title_activity_nueva_asignatura" >
+        </activity>
     </application>
 
 </manifest>
