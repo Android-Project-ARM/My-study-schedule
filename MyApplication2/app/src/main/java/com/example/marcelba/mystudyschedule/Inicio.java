@@ -45,7 +45,7 @@ public class Inicio extends ActionBarActivity implements Button.OnClickListener{
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            Intent intent = new Intent(this, Ajustes.class);
+            Intent intent = new Intent(this, Settings.class);
             startActivity(intent);
             return true;
         }
@@ -58,16 +58,16 @@ public class Inicio extends ActionBarActivity implements Button.OnClickListener{
        Intent intent=null;
         switch(v.getId()){
             case R.id.horaryButton:
-                intent = new Intent(this, Horario.class);
+                intent = new Intent(this, Horary.class);
                 break;
             case R.id.subjectsButton:
-                intent = new Intent(this, Asignaturas.class);
+                intent = new Intent(this, Subjects.class);
                 break;
             case R.id.tasksButton:
-                intent = new Intent(this, Tareas.class);
+                intent = new Intent(this, Tasks.class);
                 break;
             case R.id.evaluationButton:
-                intent = new Intent(this, Evaluacion.class);
+                intent = new Intent(this, Evaluation.class);
                 break;
               default:
                 intent = new Intent(this, Inicio.class);

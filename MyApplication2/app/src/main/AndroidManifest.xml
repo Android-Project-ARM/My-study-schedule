@@ -17,37 +17,37 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Ajustes"
+            android:name=".Settings"
             android:label="@string/title_activity_ajustes"
             android:parentActivityName=".Inicio" >
         </activity>
         <activity
-            android:name=".Horario"
+            android:name=".Horary"
             android:label="@string/title_activity_horario"
             android:parentActivityName=".Inicio" >
         </activity>
         <activity
-            android:name=".Asignaturas"
+            android:name=".Subjects"
             android:label="@string/title_activity_asignaturas"
             android:parentActivityName=".Inicio" >
         </activity>
         <activity
-            android:name=".Tareas"
+            android:name=".Tasks"
             android:label="@string/title_activity_tareas"
             android:parentActivityName=".Inicio" >
         </activity>
         <activity
-            android:name=".Evaluacion"
+            android:name=".Evaluation"
             android:label="@string/title_activity_evaluacion"
             android:parentActivityName=".Inicio" >
         </activity>
         <activity
-            android:name=".DetalleAsignatura"
+            android:name=".DetailsSubject"
             android:label="@string/title_activity_detalle_asignatura"
-            android:parentActivityName=".Asignaturas" >
+            android:parentActivityName=".Subjects" >
         </activity>
         <activity
-            android:name=".NuevaAsignatura"
+            android:name=".NewSubject"
             android:label="@string/title_activity_nueva_asignatura" >
         </activity>
     </application>

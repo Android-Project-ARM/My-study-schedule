@@ -6,19 +6,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class Tareas extends ActionBarActivity {
+public class NewSubject extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tareas);
+        setContentView(R.layout.activity_nueva_asignatura);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_tareas, menu);
+        getMenuInflater().inflate(R.menu.menu_nueva_asignatura, menu);
         return true;
     }
 

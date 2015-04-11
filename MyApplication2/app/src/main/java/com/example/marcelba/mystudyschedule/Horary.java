@@ -1,24 +1,25 @@
 package com.example.marcelba.mystudyschedule;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class DetalleAsignatura extends ActionBarActivity {
+public class Horary extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detalle_asignatura);
+        setContentView(R.layout.activity_horario);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_detalle_asignatura, menu);
+        getMenuInflater().inflate(R.menu.menu_horario, menu);
         return true;
     }
 
@@ -31,6 +32,8 @@ public class DetalleAsignatura extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent intent = new Intent(this, Settings.class);
+            startActivity(intent);
             return true;
         }
 
