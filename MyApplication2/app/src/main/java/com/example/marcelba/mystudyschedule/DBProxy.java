@@ -54,17 +54,26 @@ public class DBProxy extends SQLiteOpenHelper {
         values.put(DB_SUBJECTS_COL_COLOR, color);
         values.put(DB_SUBJECTS_COL_TEACHER, teacher);
         db.insert(DB_SUBJECTS_TABLE_NAME, null, values);
-
     }
 
-   /* public Cursor ReadNotes() {
+    public void AddHorary(int id, int weekday,String startime, String endtime){
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.putNull(DB_HORARY_COL_ID);
+        values.put(DB_HORARY_COL_SUBJECT_ID, id);
+        values.put(DB_HORARY_COL_WEEKDAY, weekday);
+        values.put(DB_HORARY_COL_STARTTIME, startime);
+        values.put(DB_HORARY_COL_ENDTIME, endtime);
+        db.insert(DB_HORARY_TABLE_NAME, null, values);
+    }
+
+    public Cursor ReadSubjects() {
 
         SQLiteDatabase db = getReadableDatabase();
-        String[] columns = {DB_COL_ID, DB_COL_TITLE, DB_COL_NOTE};
-        return db.query(DB_TABLE_NAME, columns, null, null, null, null, null);
-
+        String[] columns = {DB_SUBJECTS_COL_ID, DB_SUBJECTS_COL_NAME, DB_SUBJECTS_COL_COLOR, DB_SUBJECTS_COL_TEACHER};
+        return db.query(DB_SUBJECTS_TABLE_NAME, columns, null, null, null, null, null);
     }
-
+/*
     public void updateNote(long id, String title, String body)
     {
         SQLiteDatabase db = getWritableDatabase();
