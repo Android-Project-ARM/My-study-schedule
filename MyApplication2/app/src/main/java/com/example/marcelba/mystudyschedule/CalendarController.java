@@ -1,6 +1,7 @@
 package com.example.marcelba.mystudyschedule;
 
 import android.content.ContentResolver;
+import android.content.ContentUris;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.util.Log;
@@ -99,7 +100,7 @@ public class CalendarController {
         ContentValues values = new ContentValues();
         values.put(CalendarContract.Events.DTSTART, startMillis);
         values.put(CalendarContract.Events.DTEND, endMillis);
-        values.put(CalendarContract.Events.RRULE,"FREQ=WEEKLY;WKST=MO");
+        values.put(CalendarContract.Events.RRULE,"FREQ=WEEKLY;WKST=MO;COUNT=5000");
         values.put(CalendarContract.Events.EVENT_COLOR,Color.RED);
         values.put(CalendarContract.Events.TITLE, title);
         values.put(CalendarContract.Events.DESCRIPTION, description);
@@ -111,6 +112,51 @@ public class CalendarController {
 
     }
 
+    private static final String DEBUG_TAG = "MyActivity";
+    public static final String[] INSTANCE_PROJECTION = new String[] {
+            CalendarContract.Instances.EVENT_ID,      // 0
+            CalendarContract.Instances.START_DAY,         // 1
+            CalendarContract.Instances.TITLE          // 2
+    };
+
+    // The indices for the projection array above.
+    public static final int PROJECTION_IDI_INDEX = 0;
+    public static final int PROJECTION_START_DAY_INDEX = 1;
+    public static final int PROJECTION_TITLE_INDEX = 2;
+
+    public Cursor GetSubjects(Context ctx)
+    {
+        // Specify the date range you want to search for recurring
+        // event instances
+        Calendar beginTime = Calendar.getInstance();
+        beginTime.set(2020, 4, 5, 0, 0);
+        long startMillis = beginTime.getTimeInMillis();
+        Calendar endTime = Calendar.getInstance();
+        endTime.set(2020, 4, 12, 23, 59);
+        long endMillis = endTime.getTimeInMillis();
+
+        Cursor cur = null;
+        ContentResolver cr = ctx.getContentResolver();
+
+        // The ID of the recurring event whose instances you are searching
+        // for in the Instances table
+        //String selection = CalendarContract.Instances.EVENT_ID + " = ?";
+        //String[] selectionArgs = new String[] {"207"};
+
+        // Construct the query with the desired date range.
+        Uri.Builder builder = CalendarContract.Instances.CONTENT_URI.buildUpon();
+        ContentUris.appendId(builder, startMillis);
+        ContentUris.appendId(builder, endMillis);
+
+        // Submit the query
+        cur =  cr.query(builder.build(),
+                INSTANCE_PROJECTION,
+                null,
+                null,
+                null);
+
+        return cur;
+    }
 
 
 }

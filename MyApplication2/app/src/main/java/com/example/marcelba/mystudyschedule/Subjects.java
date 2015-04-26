@@ -1,19 +1,37 @@
 package com.example.marcelba.mystudyschedule;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.provider.CalendarContract;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 
 
 public class Subjects extends ActionBarActivity {
+
+    ListView subjectList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_asignaturas);
+
+
+        Cursor c = Inicio.cal.GetSubjects(this);
+        NoIdCursorWrapper nc = new NoIdCursorWrapper(c, CalendarContract.Instances.EVENT_ID);
+
+         String[] fromColumns = {CalendarContract.Instances.TITLE,CalendarContract.Instances.START_DAY};
+         int[] toViews = {R.id.SubjectTitle,R.id.SubjectDay};
+
+        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.subjects_row,nc,fromColumns,toViews,0);
+        subjectList = (ListView)findViewById(R.id.listSubjectView);
+        subjectList.setAdapter(adapter);
+        //subjectList.setOnItemClickListener(this);
     }
 
 
