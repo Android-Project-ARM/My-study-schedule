@@ -128,26 +128,26 @@ public class NewSubject extends ActionBarActivity implements AdapterView.OnItemS
 
 
         Spinner HoraInicio = (Spinner) findViewById(R.id.SpHoraInicio01);
-        String AsignaturaHoraInicio = HoraInicio.getSelectedItem().toString();
+        int AsignaturaHoraInicio = Integer.parseInt(HoraInicio.getSelectedItem().toString());
 
         Spinner MinutosInicio = (Spinner) findViewById(R.id.SpMinutosInicio01);
-        String AsignaturaMinuotsInicio = MinutosInicio.getSelectedItem().toString();
+        int AsignaturaMinuotsInicio = Integer.parseInt(MinutosInicio.getSelectedItem().toString());
 
 
         Spinner HoraFinal = (Spinner) findViewById(R.id.SpHoraFinal01);
-        String AsignaturaHoraFinal = HoraFinal.getSelectedItem().toString();
+        int AsignaturaHoraFinal = Integer.parseInt(HoraFinal.getSelectedItem().toString());
 
         Spinner MinutosFinal = (Spinner) findViewById(R.id.SpMinutosFinal01);
-        String AsignaturaMinuotsFinal = MinutosFinal.getSelectedItem().toString();
+        int AsignaturaMinuotsFinal = Integer.parseInt(MinutosFinal.getSelectedItem().toString());
 
-        Log.i("Asignatura",AsignturaNombre);
-        Log.i("Profesor",AsignaturaProfesor);
-        Log.i("Dia",AsignaturaDia);
-        Log.i("Hora Inicio",AsignaturaHoraInicio +":"+AsignaturaMinuotsInicio );
-        Log.i("Hora Final",AsignaturaHoraFinal +":"+AsignaturaMinuotsFinal );
+        //Log.i("Asignatura",AsignturaNombre);
+        //Log.i("Profesor",AsignaturaProfesor);
+        //Log.i("Dia",AsignaturaDia);
+        //Log.i("Hora Inicio",AsignaturaHoraInicio +":"+AsignaturaMinuotsInicio );
+        //Log.i("Hora Final",AsignaturaHoraFinal +":"+AsignaturaMinuotsFinal );
 
 
-
+        Inicio.cal.IntroduceNewSubject(this,Utils.Month(AsignaturaDia),Utils.dayOfTheMonth(AsignaturaDia),AsignaturaHoraInicio,AsignaturaMinuotsInicio,AsignaturaHoraFinal,AsignaturaMinuotsFinal,AsignturaNombre,"Profesor: "+AsignaturaProfesor);
 
         Intent Subjects = new Intent(this, Subjects.class);
         startActivity(Subjects);

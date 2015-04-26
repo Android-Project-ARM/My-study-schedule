@@ -1,16 +1,17 @@
 package com.example.marcelba.mystudyschedule;
 
-        import android.content.ContentResolver;
-        import android.database.Cursor;
-        import android.util.Log;
+import android.content.ContentResolver;
+import android.database.Cursor;
+import android.graphics.Color;
+import android.util.Log;
 
-        import android.content.ContentValues;
-        import android.content.Context;
-        import android.net.Uri;
-        import android.provider.CalendarContract;
-        import android.provider.CalendarContract.Calendars;
+import android.content.ContentValues;
+import android.content.Context;
+import android.net.Uri;
+import android.provider.CalendarContract;
+import android.provider.CalendarContract.Calendars;
 
-        import java.util.Calendar;
+import java.util.Calendar;
 
 public class CalendarController {
 
@@ -21,7 +22,7 @@ public class CalendarController {
 
     // Projection array. Creating indices for this array instead of doing
     // dynamic lookups improves performance.
-    public static final String[] EVENT_PROJECTION = new String[] {
+    public static final String[] EVENT_PROJECTION = new String[]{
             Calendars._ID,                           // 0
             Calendars.ACCOUNT_NAME,                  // 1
             Calendars.CALENDAR_DISPLAY_NAME,         // 2
@@ -34,7 +35,7 @@ public class CalendarController {
     private static final int PROJECTION_DISPLAY_NAME_INDEX = 2;
     private static final int PROJECTION_OWNER_ACCOUNT_INDEX = 3;
 
-    public CalendarController(Context ctx){
+    public CalendarController(Context ctx) {
         // Run query
         Cursor cur = null;
         ContentResolver cr = ctx.getContentResolver();
@@ -42,20 +43,18 @@ public class CalendarController {
         String selection = "((" + Calendars.ACCOUNT_NAME + " = ?) AND ("
                 + Calendars.ACCOUNT_TYPE + " = ?) AND ("
                 + Calendars.OWNER_ACCOUNT + " = ?))";
-        String[] selectionArgs = new String[] {CALENDAR_ACCOUNT_NAME, CalendarContract.ACCOUNT_TYPE_LOCAL,
+        String[] selectionArgs = new String[]{CALENDAR_ACCOUNT_NAME, CalendarContract.ACCOUNT_TYPE_LOCAL,
                 CALENDAR_ACCOUNT_NAME};
         // Submit the query and get a Cursor object back.
         cur = cr.query(uri, EVENT_PROJECTION, selection, selectionArgs, null);
 
-        if(cur.moveToNext())
-        {
+        if (cur.moveToNext()) {
             // Get the field values
             calID = cur.getLong(PROJECTION_ID_INDEX);
             // displayName = cur.getString(PROJECTION_DISPLAY_NAME_INDEX);
             //accountName = cur.getString(PROJECTION_ACCOUNT_NAME_INDEX);
             // ownerName = cur.getString(PROJECTION_OWNER_ACCOUNT_INDEX);
-        }else
-        {
+        } else {
             CreateCalendar(ctx);
         }
 
@@ -81,8 +80,35 @@ public class CalendarController {
         values.put(Calendars.CALENDAR_TIME_ZONE, "Europe/Rome");
 
         Uri newCalendar = ctx.getContentResolver().insert(target, values);
-        long id = Long.parseLong(newCalendar.getLastPathSegment() );
+        long id = Long.parseLong(newCalendar.getLastPathSegment());
         calID = id;
+    }
+
+    public void IntroduceNewSubject(Context ctx,int month , int day, int startHour, int startMinute, int endHour, int endMinute, String title, String description) {
+
+        long startMillis = 0;
+        long endMillis = 0;
+        Calendar beginTime = Calendar.getInstance();
+        beginTime.set(2015, month, day, startHour, startMinute);
+        startMillis = beginTime.getTimeInMillis();
+        Calendar endTime = Calendar.getInstance();
+        endTime.set(2015, month, day,  endHour,endMinute);
+        endMillis = endTime.getTimeInMillis();
+
+        ContentResolver cr = ctx.getContentResolver();
+        ContentValues values = new ContentValues();
+        values.put(CalendarContract.Events.DTSTART, startMillis);
+        values.put(CalendarContract.Events.DTEND, endMillis);
+        values.put(CalendarContract.Events.RRULE,"FREQ=WEEKLY;WKST=MO");
+        values.put(CalendarContract.Events.EVENT_COLOR,Color.RED);
+        values.put(CalendarContract.Events.TITLE, title);
+        values.put(CalendarContract.Events.DESCRIPTION, description);
+        values.put(CalendarContract.Events.CALENDAR_ID, calID);
+        values.put(CalendarContract.Events.EVENT_TIMEZONE, "Europe/Madrid");
+        Uri uri = cr.insert(CalendarContract.Events.CONTENT_URI, values);
+
+        long eventID = Long.parseLong(uri.getLastPathSegment());
+
     }
 
 

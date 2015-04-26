@@ -48,6 +48,7 @@ public class Inicio extends ActionBarActivity implements Button.OnClickListener{
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            //int thingy = Utils.Month("Viernes");
             Intent intent = new Intent(this, Settings.class);
             startActivity(intent);
             return true;
