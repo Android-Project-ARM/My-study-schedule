@@ -6,7 +6,135 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.example.marcelba.mystudyschedule.NewSubject">
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+
+
+
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/TvAsignatura"
+        android:id="@+id/TvAsignatura"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/EtAsignatura"
+        android:layout_below="@+id/TvAsignatura"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:singleLine="true"
+        android:layout_toLeftOf="@+id/SpColor"
+        android:layout_toStartOf="@+id/SpColor" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/TvProfesor"
+        android:id="@+id/TvProfesor"
+        android:layout_below="@+id/EtAsignatura"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/EtProfesor"
+        android:layout_below="@+id/TvProfesor"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:singleLine="true"
+        android:layout_alignRight="@+id/EtAsignatura"
+        android:layout_alignEnd="@+id/EtAsignatura" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/TvColor"
+        android:id="@+id/TvColor"
+        android:layout_alignTop="@+id/TvAsignatura"
+        android:layout_alignRight="@+id/SpColor"
+        android:layout_alignEnd="@+id/SpColor"
+        android:layout_alignParentRight="true"/>
+
+    <Spinner
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:id="@+id/SpColor"
+        android:background="#00ff23"
+        android:layout_alignTop="@+id/EtAsignatura"
+        android:layout_alignRight="@+id/SpDia01"
+        android:layout_alignEnd="@+id/SpDia01"
+        android:layout_alignParentRight="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/TvHorario"
+        android:id="@+id/TvHorrario"
+        android:layout_below="@+id/EtProfesor"
+        android:layout_marginTop="31dp"
+        android:singleLine="false" />
+
+    <Spinner
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:id="@+id/SpDia01"
+       android:layout_below="@+id/TvHorrario"
+       android:layout_alignParentLeft="true"
+       android:layout_alignParentStart="true" />
+
+    <Spinner
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:id="@+id/SpHoraInicio01"
+       android:layout_below="@+id/SpDia01"
+       android:layout_alignParentLeft="true"
+       android:layout_alignParentStart="true" />
+
+      <Spinner
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/SpMinutosInicio01"
+          android:layout_below="@+id/SpHoraInicio01"
+          android:layout_alignParentLeft="true"
+          android:layout_alignParentStart="true" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/SpHoraFinal01"
+        android:layout_below="@+id/SpMinutosInicio01"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/SpMinutosFinal01"
+        android:layout_below="@+id/SpHoraFinal01"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/BtGuardar"
+        android:id="@+id/BtGuardar"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="saveNewSubject"/>
+
 
 </RelativeLayout>
