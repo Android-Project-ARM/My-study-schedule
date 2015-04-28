@@ -115,13 +115,13 @@ public class CalendarController {
     private static final String DEBUG_TAG = "MyActivity";
     public static final String[] INSTANCE_PROJECTION = new String[] {
             CalendarContract.Instances.EVENT_ID,      // 0
-            CalendarContract.Instances.START_DAY,         // 1
+            CalendarContract.Instances.BEGIN,         // 1
             CalendarContract.Instances.TITLE          // 2
     };
 
     // The indices for the projection array above.
     public static final int PROJECTION_IDI_INDEX = 0;
-    public static final int PROJECTION_START_DAY_INDEX = 1;
+    public static final int PROJECTION_BEGIN_INDEX = 1;
     public static final int PROJECTION_TITLE_INDEX = 2;
 
     public Cursor GetSubjects(Context ctx)

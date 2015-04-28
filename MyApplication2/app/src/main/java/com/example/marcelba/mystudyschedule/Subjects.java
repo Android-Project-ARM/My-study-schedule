@@ -25,7 +25,7 @@ public class Subjects extends ActionBarActivity {
         Cursor c = Inicio.cal.GetSubjects(this);
         NoIdCursorWrapper nc = new NoIdCursorWrapper(c, CalendarContract.Instances.EVENT_ID);
 
-         String[] fromColumns = {CalendarContract.Instances.TITLE,CalendarContract.Instances.START_DAY};
+         String[] fromColumns = {CalendarContract.Instances.TITLE,CalendarContract.Instances.BEGIN};
          int[] toViews = {R.id.SubjectTitle,R.id.SubjectDay};
 
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.subjects_row,nc,fromColumns,toViews,0);
