@@ -50,6 +50,10 @@
             android:name=".NewSubject"
             android:label="@string/title_activity_nueva_asignatura" >
         </activity>
+        <activity
+            android:name=".NewTask"
+            android:label="@string/title_activity_nueva_tarea" >
+        </activity>
     </application>
 
 </manifest>
