@@ -1,31 +1,24 @@
 package com.example.marcelba.mystudyschedule;
 
-import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.RatingBar;
 
 
-public class NewTask extends ActionBarActivity {
-
-    public Integer idTarea;
-    public boolean update = false;
+public class detalle_tareas extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nueva_tarea);
+        setContentView(R.layout.activity_detalle_tarea);
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_nueva_tarea, menu);
+        getMenuInflater().inflate(R.menu.menu_detalle_tareas, menu);
         return true;
     }
 
@@ -43,18 +36,4 @@ public class NewTask extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-
-
-
-    /** Save New Task.**/
-    public void saveNewTask(View v){
-
-        Intent newView = new Intent(this, Tasks.class); //preparamos la view que queremos lanzar
-        startActivity(newView);
-
-
-    }
-
-
 }

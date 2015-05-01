@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.SimpleCursorAdapter;
 
 public class Tasks extends ActionBarActivity  {
 
+
     public static DBProxy db;
 
     @Override
@@ -20,21 +22,24 @@ public class Tasks extends ActionBarActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tareas);
 
-         /**  db= new DBProxy(this);
-            Cursor c = db.ReadTask();
-            String[] fromColums = {db.DB_TASK_COL_NAME,db.DB_TASK_COL_ENDDATE};
-            int [] toView = {R.id.ElementTarea, R.id.ElementTareaFecha};
-            SimpleCursorAdapter adapter = new SimpleCursorAdapter(
+        db = new DBProxy(this);
+
+        Cursor c = db.ReadTask();
+        String[] fromColumns = {db.DB_TASK_COL_NAME};
+        int [] toView = {R.id.ElementTarea};
+
+        SimpleCursorAdapter adapter = new SimpleCursorAdapter(
                 this,
-                R.layout.activity_dellate_tarea,
+                R.layout.activity_detalle_tarea,
                 c,
-                fromColums,
+                fromColumns,
                 toView,
                 0
-            );
+        );
         ListView list = (ListView) findViewById(R.id.listElementsTask);
         list.setAdapter(adapter);
-        list.setOnItemClickListener(this);**/
+
+
 
     }
 

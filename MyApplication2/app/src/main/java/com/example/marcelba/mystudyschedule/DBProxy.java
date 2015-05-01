@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
+import android.util.Log;
 
 
 /**
@@ -25,7 +26,8 @@ public class DBProxy extends SQLiteOpenHelper {
 
     final public static String DB_HORARY_TABLE_NAME = "horary";
     final public static String DB_HORARY_COL_ID = BaseColumns._ID;
-    final public static String DB_HORARY_COL_SUBJECT_ID = BaseColumns._ID;
+   /** final public static String DB_HORARY_COL_SUBJECT_ID = BaseColumns._ID;**/
+    final public static String DB_HORARY_COL_SUBJECT_ID = "subject_id";
     final public static String DB_HORARY_COL_WEEKDAY = "weekday";
     final public static String DB_HORARY_COL_STARTTIME = "startime";
     final public static String DB_HORARY_COL_ENDTIME = "endtime";
@@ -59,8 +61,8 @@ public class DBProxy extends SQLiteOpenHelper {
                         DB_TASK_COL_NAME+" TEXT,"+
                         DB_TASK_COL_SUBJECT_ID+" INTEGER,"+
                         DB_TASK_COL_ENDDATE+" DATE,"+
-                        DB_TASK_COL_PRIORITY+" FLOAT,"+
-                        DB_TASK_COL_DESC+"TEXT)" );
+                        DB_TASK_COL_PRIORITY+" INTEGER,"+
+                        DB_TASK_COL_DESC+" TEXT)" );
 
 
 
@@ -91,21 +93,22 @@ public class DBProxy extends SQLiteOpenHelper {
 
     public Cursor ReadTask() {
         SQLiteDatabase db = getReadableDatabase();
-        String[] columns = {DB_TASK_COL_ID, DB_TASK_COL_NAME, DB_TASK_COL_SUBJECT_ID, DB_TASK_COL_ENDDATE, DB_TASK_COL_PRIORITY,  DB_TASK_COL_DESC};
+        String[] columns = { DB_TASK_COL_NAME};
         return db.query(DB_TASK_TABLE_NAME, columns, null, null, null, null, null);
 
     }
 
-    public void AddTask(String addNuevaTarea, String addFechaTarea, Float addRatTarea, String addDescTarea) {
+    public void AddTask(String addNuevaTarea) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
         values.putNull(DB_TASK_COL_ID);
         values.put(DB_TASK_COL_NAME, addNuevaTarea);
-        values.put(DB_TASK_COL_ENDDATE, addFechaTarea);
-        values.put(DB_TASK_COL_PRIORITY, addRatTarea);
-        values.put(DB_TASK_COL_DESC, addDescTarea);
+
 
         db.insert(DB_TASK_TABLE_NAME, null, values);
+
+
+
 
     }
 }

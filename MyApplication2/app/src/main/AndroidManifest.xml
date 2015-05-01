@@ -54,6 +54,10 @@
             android:name=".NewTask"
             android:label="@string/title_activity_nueva_tarea" >
         </activity>
+        <activity
+            android:name=".detalle_tareas"
+            android:label="@string/title_activity_detalle_tareas" >
+        </activity>
     </application>
 
 </manifest>
