@@ -13,8 +13,7 @@ import android.widget.RatingBar;
 
 public class NewTask extends ActionBarActivity {
 
-    public Integer idTarea;
-    public boolean update = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +54,19 @@ public class NewTask extends ActionBarActivity {
 
 
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+
+        EditText NuevaTarea = (EditText) findViewById(R.id.EtNuevaTarea);
+        String addNuevaTarea = NuevaTarea.getText().toString();
+        Tasks.db.AddTask(addNuevaTarea);
+
+
+    }
+
 
 
 }

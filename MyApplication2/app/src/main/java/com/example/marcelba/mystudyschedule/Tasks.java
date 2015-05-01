@@ -22,7 +22,7 @@ public class Tasks extends ActionBarActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tareas);
 
-        db = new DBProxy(this);
+        /**db = new DBProxy(this);
 
         Cursor c = db.ReadTask();
         String[] fromColumns = {db.DB_TASK_COL_NAME};
@@ -37,7 +37,7 @@ public class Tasks extends ActionBarActivity  {
                 0
         );
         ListView list = (ListView) findViewById(R.id.listElementsTask);
-        list.setAdapter(adapter);
+        list.setAdapter(adapter);**/
 
 
 
