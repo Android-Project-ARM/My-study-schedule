@@ -8,6 +8,7 @@
 
     <ListView
         android:layout_width="wrap_content"
+        android:scrollbars="vertical"
         android:layout_height="wrap_content"
         android:id="@+id/listSubjectView"
         android:layout_gravity="center_vertical" />

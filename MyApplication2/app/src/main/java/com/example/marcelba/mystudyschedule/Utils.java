@@ -21,6 +21,12 @@ public class Utils {
         return c.get(Calendar.MONTH);
     }
 
+    public static String GetWeekDay(long epoch) {
+        Calendar c = Calendar.getInstance();
+        c.setTimeInMillis(epoch);
+        return IntToDay(c.get(Calendar.DAY_OF_WEEK));
+    }
+
     private static int DayToInt(String day){
         switch(day)
         {
@@ -40,6 +46,28 @@ public class Utils {
                 return 1;
             default:
                 return 1;
+        }
+    }
+
+    private static String IntToDay(int day){
+        switch(day)
+        {
+            case 2:
+                return "Lunes";
+            case 3:
+                return "Martes";
+            case 4:
+                return "Miercoles";
+            case 5:
+                return "Jueves";
+            case 6:
+                return "Viernes";
+            case 7:
+                return "Sabado";
+            case 1:
+                return "Domingo";
+            default:
+                return "Lunes";
         }
     }
 }
