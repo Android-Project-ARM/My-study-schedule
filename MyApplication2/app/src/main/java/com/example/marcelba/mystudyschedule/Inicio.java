@@ -11,6 +11,8 @@ import android.widget.Button;
 
 public class Inicio extends ActionBarActivity implements Button.OnClickListener{
 
+    public static CalendarController cal;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +28,7 @@ public class Inicio extends ActionBarActivity implements Button.OnClickListener{
         // MenuItem item= (MenuItem) findViewById(R.id.action_settings);
         //item.setVisible(false);
 
+        cal = new CalendarController(this);
     }
 
 
@@ -45,6 +48,7 @@ public class Inicio extends ActionBarActivity implements Button.OnClickListener{
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            //int thingy = Utils.Month("Viernes");
             Intent intent = new Intent(this, Settings.class);
             startActivity(intent);
             return true;
