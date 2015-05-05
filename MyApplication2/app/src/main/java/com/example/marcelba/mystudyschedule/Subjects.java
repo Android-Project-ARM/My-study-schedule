@@ -59,7 +59,7 @@ public class Subjects extends ActionBarActivity implements AdapterView.OnItemCli
         //TextView tempText = (TextView)findViewById(R.id.SubjectDay);
         //int number = Integer.parseInt(tempText.getText().toString());
         //tempText.setText(Utils.GetWeekDay(number));
-        //subjectList.setOnItemClickListener(this);
+        subjectList.setOnItemClickListener(this);
     }
 
 
@@ -94,6 +94,12 @@ public class Subjects extends ActionBarActivity implements AdapterView.OnItemCli
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent i = new Intent (this, DetailsSubject.class);
 
+        i.putExtra("id",id);
+        i.putExtra("title",((TextView) view.findViewById(R.id.SubjectTitle)).getText().toString());
+        i.putExtra("day",((TextView) view.findViewById(R.id.SubjectDay)).getText().toString() );
+
+        startActivity(i);
     }
 }
