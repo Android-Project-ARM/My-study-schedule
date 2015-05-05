@@ -50,23 +50,12 @@ public class NewTask extends ActionBarActivity {
     public void saveNewTask(View v){
 
         Intent newView = new Intent(this, Tasks.class); //preparamos la view que queremos lanzar
-        startActivity(newView);
-
-
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-
         EditText NuevaTarea = (EditText) findViewById(R.id.EtNuevaTarea);
         String addNuevaTarea = NuevaTarea.getText().toString();
         Tasks.db.AddTask(addNuevaTarea);
-
+        startActivity(newView);
 
     }
-
 
 
 }

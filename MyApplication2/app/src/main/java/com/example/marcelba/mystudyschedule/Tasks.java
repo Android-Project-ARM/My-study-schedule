@@ -16,13 +16,15 @@ public class Tasks extends ActionBarActivity  {
 
 
     public static DBProxy db;
+    ListView noteTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tareas);
 
-        /**db = new DBProxy(this);
+        db = new DBProxy(this);
+
 
         Cursor c = db.ReadTask();
         String[] fromColumns = {db.DB_TASK_COL_NAME};
@@ -37,10 +39,7 @@ public class Tasks extends ActionBarActivity  {
                 0
         );
         ListView list = (ListView) findViewById(R.id.listElementsTask);
-        list.setAdapter(adapter);**/
-
-
-
+        list.setAdapter(adapter);
     }
 
 
@@ -60,7 +59,18 @@ public class Tasks extends ActionBarActivity  {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+       /*     db.AddTask("hola");
+
+            Cursor c = db.ReadTask();
+
+            String[] fromColumns = {db.DB_TASK_COL_NAME};
+            int[] toViews = {R.id.listTasks};
+
+            SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.task_list,c,fromColumns,toViews,0);
+            noteTask = (ListView)findViewById(R.id.listElementsTask);
+            noteTask.setAdapter(adapter);*/
+            //noteTask.setOnItemClickListener(this);
+                       return true;
         }
 
         return super.onOptionsItemSelected(item);

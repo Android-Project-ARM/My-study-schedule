@@ -60,15 +60,9 @@ public class DBProxy extends SQLiteOpenHelper {
                         DB_TASK_COL_ID+" INTEGER PRIMARY KEY,"+
                         DB_TASK_COL_NAME+" TEXT,"+
                         DB_TASK_COL_SUBJECT_ID+" INTEGER,"+
-                        DB_TASK_COL_ENDDATE+" DATE,"+
+                        DB_TASK_COL_ENDDATE+" INTEGER,"+
                         DB_TASK_COL_PRIORITY+" INTEGER,"+
                         DB_TASK_COL_DESC+" TEXT)" );
-
-
-
-
-
-
     }
 
     @Override
@@ -93,22 +87,19 @@ public class DBProxy extends SQLiteOpenHelper {
 
     public Cursor ReadTask() {
         SQLiteDatabase db = getReadableDatabase();
-        String[] columns = { DB_TASK_COL_NAME};
+        String[] columns = new String[]{DB_TASK_COL_ID, DB_TASK_COL_NAME};
         return db.query(DB_TASK_TABLE_NAME, columns, null, null, null, null, null);
-
     }
 
-    public void AddTask(String addNuevaTarea) {
+      public void AddTask(String addNuevaTarea) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
         values.putNull(DB_TASK_COL_ID);
         values.put(DB_TASK_COL_NAME, addNuevaTarea);
-
-
+        values.put(DB_TASK_COL_SUBJECT_ID, 21);
+        values.put(DB_TASK_COL_ENDDATE, 222);
+        values.put(DB_TASK_COL_PRIORITY, 5);
+        values.put(DB_TASK_COL_DESC, "asdfasdf");
         db.insert(DB_TASK_TABLE_NAME, null, values);
-
-
-
-
     }
 }
