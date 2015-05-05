@@ -2,20 +2,18 @@ package com.example.marcelba.mystudyschedule;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
 public class Tasks extends ActionBarActivity  {
 
 
-    public static DBProxy db;
+
     ListView noteTask;
 
     @Override
@@ -23,11 +21,11 @@ public class Tasks extends ActionBarActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tareas);
 
-        db = new DBProxy(this);
 
 
-        Cursor c = db.ReadTask();
-        String[] fromColumns = {db.DB_TASK_COL_NAME};
+
+        Cursor c = Inicio.db.ReadTask();
+        String[] fromColumns = {Inicio.db.DB_TASK_COL_NAME};
         int [] toView = {R.id.ElementTarea};
 
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(

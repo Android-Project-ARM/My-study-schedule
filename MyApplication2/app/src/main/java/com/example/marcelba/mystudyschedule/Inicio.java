@@ -12,6 +12,7 @@ import android.widget.Button;
 public class Inicio extends ActionBarActivity implements Button.OnClickListener{
 
     public static CalendarController cal;
+    public static DBProxy db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,8 @@ public class Inicio extends ActionBarActivity implements Button.OnClickListener{
         evaluationButton.setOnClickListener(this);
         // MenuItem item= (MenuItem) findViewById(R.id.action_settings);
         //item.setVisible(false);
+
+        db = new DBProxy(this);
 
         cal = new CalendarController(this);
     }

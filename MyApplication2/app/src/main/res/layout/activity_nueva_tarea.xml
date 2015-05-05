@@ -22,7 +22,9 @@
         android:id="@+id/EtNuevaTarea"
         android:layout_below="@+id/TvNuevaTarea"
         android:layout_alignLeft="@+id/TvNuevaTarea"
-        android:layout_alignStart="@+id/TvNuevaTarea" />
+        android:layout_alignStart="@+id/TvNuevaTarea"
+        android:lines="1"
+        android:maxLines="1" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -58,7 +60,9 @@
         android:id="@+id/EtFechaTarea"
         android:layout_below="@+id/SnAsignatura"
         android:layout_alignLeft="@+id/SnAsignatura"
-        android:layout_alignStart="@+id/SnAsignatura" />
+        android:layout_alignStart="@+id/SnAsignatura"
+        android:hint="dd/mm/aaaa"
+        android:inputType="date" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -97,7 +101,8 @@
         android:layout_below="@+id/TvDesTarea"
         android:layout_alignLeft="@+id/TvDesTarea"
         android:layout_alignStart="@+id/TvDesTarea"
-        android:lines="5" />
+        android:lines="5"
+        android:maxLines="5" />
 
     <Button
         style="?android:attr/buttonStyleSmall"

@@ -3,7 +3,6 @@ package com.example.marcelba.mystudyschedule;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -146,8 +145,13 @@ public class NewSubject extends ActionBarActivity implements AdapterView.OnItemS
         //Log.i("Hora Inicio",AsignaturaHoraInicio +":"+AsignaturaMinuotsInicio );
         //Log.i("Hora Final",AsignaturaHoraFinal +":"+AsignaturaMinuotsFinal );
 
-
         Inicio.cal.IntroduceNewSubject(this,Utils.Month(AsignaturaDia),Utils.dayOfTheMonth(AsignaturaDia),AsignaturaHoraInicio,AsignaturaMinuotsInicio,AsignaturaHoraFinal,AsignaturaMinuotsFinal,AsignturaNombre,"Profesor: "+AsignaturaProfesor);
+
+        /** Guardamos la assignatura en una mini BD para el spinner **/
+
+        Inicio.db.AddSubject(AsignturaNombre);
+
+
 
         Intent Subjects = new Intent(this, Subjects.class);
         startActivity(Subjects);

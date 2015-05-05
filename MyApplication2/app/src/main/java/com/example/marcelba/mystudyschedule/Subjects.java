@@ -3,27 +3,21 @@ package com.example.marcelba.mystudyschedule;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.MatrixCursor;
+import android.os.Bundle;
 import android.provider.CalendarContract;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
-import android.widget.TextView;
-
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 
 public class Subjects extends ActionBarActivity implements AdapterView.OnItemClickListener{
 
     ListView subjectList;
+    public static DBProxy db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,19 +41,7 @@ public class Subjects extends ActionBarActivity implements AdapterView.OnItemCli
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.subjects_row,processedCursor,fromColumns,toViews,0);
         subjectList = (ListView)findViewById(R.id.listSubjectView);
         subjectList.setAdapter(adapter);
-       // TextView et;
-        //for (int i = 0; i < subjectList.getCount(); i++) {
-           // et = (TextView) subjectList.getChildAt(i).findViewById(R.id.SubjectDay);
-          //  if (et!=null) {
-             //  int number = Integer.parseInt(et.getText().toString());
-             // et.setText(Utils.GetWeekDay(number));
-         //  }
-        //}
 
-        //TextView tempText = (TextView)findViewById(R.id.SubjectDay);
-        //int number = Integer.parseInt(tempText.getText().toString());
-        //tempText.setText(Utils.GetWeekDay(number));
-        //subjectList.setOnItemClickListener(this);
     }
 
 

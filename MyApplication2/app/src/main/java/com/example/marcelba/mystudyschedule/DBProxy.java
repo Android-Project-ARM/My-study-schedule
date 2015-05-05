@@ -51,7 +51,7 @@ public class DBProxy extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE "+DB_SUBJECTS_TABLE_NAME+"("+DB_SUBJECTS_COL_ID+" INTEGER PRIMARY KEY,"+DB_SUBJECTS_COL_NAME+" TEXT,"+DB_SUBJECTS_COL_COLOR+" TEXT,"+DB_SUBJECTS_COL_TEACHER+"TEXT)" );
+        db.execSQL("CREATE TABLE "+DB_SUBJECTS_TABLE_NAME+"("+DB_SUBJECTS_COL_ID+" INTEGER PRIMARY KEY,"+DB_SUBJECTS_COL_NAME+")" );
         db.execSQL("CREATE TABLE "+DB_HORARY_TABLE_NAME+"("+DB_HORARY_COL_ID+" INTEGER PRIMARY KEY,"+DB_HORARY_COL_SUBJECT_ID+" INTEGER,"+DB_HORARY_COL_WEEKDAY+" INTEGER,"+DB_HORARY_COL_STARTTIME+" TEXT,"+DB_HORARY_COL_ENDTIME+"TEXT)" );
 
 
@@ -60,8 +60,8 @@ public class DBProxy extends SQLiteOpenHelper {
                         DB_TASK_COL_ID+" INTEGER PRIMARY KEY,"+
                         DB_TASK_COL_NAME+" TEXT,"+
                         DB_TASK_COL_SUBJECT_ID+" INTEGER,"+
-                        DB_TASK_COL_ENDDATE+" INTEGER,"+
-                        DB_TASK_COL_PRIORITY+" INTEGER,"+
+                        DB_TASK_COL_ENDDATE+" TEXT,"+
+                        DB_TASK_COL_PRIORITY+" FLOAT,"+
                         DB_TASK_COL_DESC+" TEXT)" );
     }
 
@@ -70,19 +70,23 @@ public class DBProxy extends SQLiteOpenHelper {
 
     }
 
-    public void AddSubject (String name, String color, String teacher){
+    public void AddSubject (String nom){
+
+        Log.i("Asignatura", nom);
 
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
         values.putNull(DB_SUBJECTS_COL_ID);
-        values.put(DB_SUBJECTS_COL_NAME, name);
-        values.put(DB_SUBJECTS_COL_COLOR, color);
-        values.put(DB_SUBJECTS_COL_TEACHER, teacher);
+        values.put(DB_SUBJECTS_COL_NAME, nom);
         db.insert(DB_SUBJECTS_TABLE_NAME, null, values);
 
     }
 
-
+    public Cursor ReadSubject() {
+        SQLiteDatabase db = getReadableDatabase();
+        String[] columns = new String[]{DB_SUBJECTS_COL_ID, DB_SUBJECTS_COL_NAME};
+        return db.query(DB_SUBJECTS_TABLE_NAME, columns, null, null, null, null, null);
+    }
 
 
     public Cursor ReadTask() {
@@ -91,15 +95,22 @@ public class DBProxy extends SQLiteOpenHelper {
         return db.query(DB_TASK_TABLE_NAME, columns, null, null, null, null, null);
     }
 
-      public void AddTask(String addNuevaTarea) {
+      public void AddTask(String addNuevaTarea, String addDescTarea,String addFechaTarea, Float addRatTarea, Integer addAsigTarea) {
+
+
+         // Log.i("descripción", addDescTarea);
+         // Log.i("fecha", addFechaTarea);
+         // Log.i("prioridad", ""+ addRatTarea);
+         // Log.i("Asig", ""+ addAsigTarea);
+
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
         values.putNull(DB_TASK_COL_ID);
         values.put(DB_TASK_COL_NAME, addNuevaTarea);
-        values.put(DB_TASK_COL_SUBJECT_ID, 21);
-        values.put(DB_TASK_COL_ENDDATE, 222);
-        values.put(DB_TASK_COL_PRIORITY, 5);
-        values.put(DB_TASK_COL_DESC, "asdfasdf");
+        values.put(DB_TASK_COL_SUBJECT_ID, addAsigTarea);
+        values.put(DB_TASK_COL_ENDDATE, addFechaTarea);
+        values.put(DB_TASK_COL_PRIORITY, addRatTarea);
+        values.put(DB_TASK_COL_DESC, addDescTarea);
         db.insert(DB_TASK_TABLE_NAME, null, values);
     }
 }
