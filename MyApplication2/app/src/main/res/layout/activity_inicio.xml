@@ -17,14 +17,16 @@
             android:layout_height="match_parent"
             android:layout_weight="0.4"
             android:text="@string/horary"
-            android:id="@+id/horaryButton"/>
+            android:id="@+id/horaryButton"
+            android:background="@color/primary_dark"/>
 
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.4"
             android:text="@string/subjects"
-            android:id="@+id/subjectsButton"/>
+            android:id="@+id/subjectsButton"
+            android:background="@color/primary_dark"/>
         </LinearLayout>
 
     <LinearLayout
@@ -37,14 +39,16 @@
         android:layout_height="match_parent"
         android:layout_weight="0.4"
         android:text="@string/Tasks"
-        android:id="@+id/tasksButton"/>
+        android:id="@+id/tasksButton"
+        android:background="@color/primary_dark"/>
 
     <Button
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="0.4"
         android:text="@string/evaluation"
-        android:id="@+id/evaluationButton"/>
+        android:id="@+id/evaluationButton"
+        android:background="@color/primary_dark"/>
 
     </LinearLayout>
 

@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="blue">#3333ff</color>
+
+
+    <color name="blancoBotones">#FAFAFA</color>
+    <color name="primary">#448AFF</color>
+    <color name="primary_dark">#2962FF</color>
+    <color name="primary_light">#82B1FF</color>
+    <color name="accent">#2979FF</color>
+
+
+
+
+
+
+
 </resources>
