@@ -21,7 +21,7 @@ import java.util.HashMap;
 import java.util.List;
 
 
-public class Subjects extends ActionBarActivity implements AdapterView.OnItemClickListener{
+public class Subjects extends ActionBarActivity implements AdapterView.OnItemClickListener {
 
     ListView subjectList;
 
@@ -34,26 +34,26 @@ public class Subjects extends ActionBarActivity implements AdapterView.OnItemCli
         Cursor c = Inicio.cal.GetSubjects(this);
         NoIdCursorWrapper nc = new NoIdCursorWrapper(c, CalendarContract.Instances.EVENT_ID);
 
-        String[] columns = new String[] { "_id", "title", "day" };
-        String[] fromColumns = new String[] {"title", "day" };
-        int[] toViews = {R.id.SubjectTitle,R.id.SubjectDay};
+        String[] columns = new String[]{"_id", "title", "day"};
+        String[] fromColumns = new String[]{"title", "day"};
+        int[] toViews = {R.id.SubjectTitle, R.id.SubjectDay};
 
-        MatrixCursor  processedCursor = new MatrixCursor(columns);
+        MatrixCursor processedCursor = new MatrixCursor(columns);
 
-        while(c.moveToNext()){
-            processedCursor.addRow(new Object[]{c.getLong(CalendarController.PROJECTION_IDI_INDEX),c.getString(CalendarController.PROJECTION_TITLE_INDEX),Utils.GetWeekDay(c.getLong(CalendarController.PROJECTION_BEGIN_INDEX))});
-          }
+        while (c.moveToNext()) {
+            processedCursor.addRow(new Object[]{c.getLong(CalendarController.PROJECTION_IDI_INDEX), c.getString(CalendarController.PROJECTION_TITLE_INDEX), Utils.GetWeekDay(c.getLong(CalendarController.PROJECTION_BEGIN_INDEX))});
+        }
 
-        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.subjects_row,processedCursor,fromColumns,toViews,0);
-        subjectList = (ListView)findViewById(R.id.listSubjectView);
+        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.subjects_row, processedCursor, fromColumns, toViews, 0);
+        subjectList = (ListView) findViewById(R.id.listSubjectView);
         subjectList.setAdapter(adapter);
-       // TextView et;
+        // TextView et;
         //for (int i = 0; i < subjectList.getCount(); i++) {
-           // et = (TextView) subjectList.getChildAt(i).findViewById(R.id.SubjectDay);
-          //  if (et!=null) {
-             //  int number = Integer.parseInt(et.getText().toString());
-             // et.setText(Utils.GetWeekDay(number));
-         //  }
+        // et = (TextView) subjectList.getChildAt(i).findViewById(R.id.SubjectDay);
+        //  if (et!=null) {
+        //  int number = Integer.parseInt(et.getText().toString());
+        // et.setText(Utils.GetWeekDay(number));
+        //  }
         //}
 
         //TextView tempText = (TextView)findViewById(R.id.SubjectDay);
@@ -85,20 +85,20 @@ public class Subjects extends ActionBarActivity implements AdapterView.OnItemCli
         return super.onOptionsItemSelected(item);
     }
 
-    public void gotoNuevaAsignatura(View v){
+    public void gotoNuevaAsignatura(View v) {
         Intent newView = new Intent(this, NewSubject.class); //preparamos la view que queremos lanzar
-        startActivity(newView );
+        startActivity(newView);
 
 
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent i = new Intent (this, DetailsSubject.class);
+        Intent i = new Intent(this, DetailsSubject.class);
 
-        i.putExtra("id",id);
-        i.putExtra("title",((TextView) view.findViewById(R.id.SubjectTitle)).getText().toString());
-        i.putExtra("day",((TextView) view.findViewById(R.id.SubjectDay)).getText().toString() );
+        i.putExtra("id", id);
+        i.putExtra("title", ((TextView) view.findViewById(R.id.SubjectTitle)).getText().toString());
+        i.putExtra("day", ((TextView) view.findViewById(R.id.SubjectDay)).getText().toString());
 
         startActivity(i);
     }

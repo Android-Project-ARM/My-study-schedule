@@ -85,7 +85,7 @@ public class CalendarController {
         calID = id;
     }
 
-    public void IntroduceNewSubject(Context ctx,int month , int day, int startHour, int startMinute, int endHour, int endMinute, String title, String description) {
+    public void IntroduceNewSubject(Context ctx, int month, int day, int startHour, int startMinute, int endHour, int endMinute, String title, String description) {
 
         long startMillis = 0;
         long endMillis = 0;
@@ -93,15 +93,15 @@ public class CalendarController {
         beginTime.set(2015, month, day, startHour, startMinute);
         startMillis = beginTime.getTimeInMillis();
         Calendar endTime = Calendar.getInstance();
-        endTime.set(2015, month, day,  endHour,endMinute);
+        endTime.set(2015, month, day, endHour, endMinute);
         endMillis = endTime.getTimeInMillis();
 
         ContentResolver cr = ctx.getContentResolver();
         ContentValues values = new ContentValues();
         values.put(CalendarContract.Events.DTSTART, startMillis);
         values.put(CalendarContract.Events.DTEND, endMillis);
-        values.put(CalendarContract.Events.RRULE,"FREQ=WEEKLY;WKST=MO;COUNT=5000");
-        values.put(CalendarContract.Events.EVENT_COLOR,Color.RED);
+        values.put(CalendarContract.Events.RRULE, "FREQ=WEEKLY;WKST=MO;COUNT=5000");
+        values.put(CalendarContract.Events.EVENT_COLOR, Color.RED);
         values.put(CalendarContract.Events.TITLE, title);
         values.put(CalendarContract.Events.DESCRIPTION, description);
         values.put(CalendarContract.Events.CALENDAR_ID, calID);
@@ -113,7 +113,7 @@ public class CalendarController {
     }
 
     private static final String DEBUG_TAG = "MyActivity";
-    public static final String[] INSTANCE_PROJECTION = new String[] {
+    public static final String[] INSTANCE_PROJECTION = new String[]{
             CalendarContract.Instances.EVENT_ID,      // 0
             CalendarContract.Instances.BEGIN,         // 1
             CalendarContract.Instances.TITLE          // 2
@@ -124,8 +124,7 @@ public class CalendarController {
     public static final int PROJECTION_BEGIN_INDEX = 1;
     public static final int PROJECTION_TITLE_INDEX = 2;
 
-    public Cursor GetSubjects(Context ctx)
-    {
+    public Cursor GetSubjects(Context ctx) {
         // Specify the date range you want to search for recurring
         // event instances
         Calendar beginTime = Calendar.getInstance();
@@ -149,7 +148,7 @@ public class CalendarController {
         ContentUris.appendId(builder, endMillis);
 
         // Submit the query
-        cur =  cr.query(builder.build(),
+        cur = cr.query(builder.build(),
                 INSTANCE_PROJECTION,
                 null,
                 null,
@@ -157,8 +156,6 @@ public class CalendarController {
 
         return cur;
     }
-
-
 
 
 }

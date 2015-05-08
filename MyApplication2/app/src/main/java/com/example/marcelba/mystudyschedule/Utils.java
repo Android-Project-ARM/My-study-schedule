@@ -1,5 +1,8 @@
 package com.example.marcelba.mystudyschedule;
 
+import android.app.Activity;
+import android.util.Log;
+
 import java.util.Calendar;
 
 /**
@@ -10,14 +13,14 @@ public class Utils {
     public static int dayOfTheMonth(String day) {
         int dayOfWeek = DayToInt(day);
         Calendar c = Calendar.getInstance();
-        c.set(Calendar.DAY_OF_WEEK,dayOfWeek);
+        c.set(Calendar.DAY_OF_WEEK, dayOfWeek);
         return c.get(Calendar.DAY_OF_MONTH);
     }
 
     public static int Month(String day) {
         int dayOfWeek = DayToInt(day);
         Calendar c = Calendar.getInstance();
-        c.set(Calendar.DAY_OF_WEEK,dayOfWeek);
+        c.set(Calendar.DAY_OF_WEEK, dayOfWeek);
         return c.get(Calendar.MONTH);
     }
 
@@ -27,9 +30,8 @@ public class Utils {
         return IntToDay(c.get(Calendar.DAY_OF_WEEK));
     }
 
-    private static int DayToInt(String day){
-        switch(day)
-        {
+    private static int DayToInt(String day) {
+        switch (day) {
             case "Lunes":
                 return 2;
             case "Martes":
@@ -49,9 +51,8 @@ public class Utils {
         }
     }
 
-    private static String IntToDay(int day){
-        switch(day)
-        {
+    private static String IntToDay(int day) {
+        switch (day) {
             case 2:
                 return "Lunes";
             case 3:
@@ -69,5 +70,20 @@ public class Utils {
             default:
                 return "Lunes";
         }
+    }
+
+    public static void ShowDialog(Activity basecaller,int message){
+        DialogMessage newFragment = DialogMessage.newInstance(message);
+        newFragment.show(basecaller.getFragmentManager(), "dialog");
+    }
+
+    public static void dialogPositive() {
+        // Do stuff here.
+        Log.i("FragmentAlertDialog", "Positive click!");
+    }
+
+    public static void dialogNegative() {
+        // Do stuff here.
+        Log.i("FragmentAlertDialog", "Negative click!");
     }
 }

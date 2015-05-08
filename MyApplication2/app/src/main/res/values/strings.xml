@@ -25,16 +25,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
     <!-- Stings TextViews  -->
 
     <string name="TvAsignatura">Asignatura</string>
@@ -59,5 +49,8 @@
     <string name="title_activity_detalle_tareas">detalle_tareas</string>
 
 
+    <!-- Error Messages -->
+    <string name="no_subjects_yet">No hay asignaturas disponibles</string>
+    <string name="in_development">En desarrollo</string>
 
 </resources>

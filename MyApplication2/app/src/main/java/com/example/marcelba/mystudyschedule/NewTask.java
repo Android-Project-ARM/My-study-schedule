@@ -3,10 +3,12 @@ package com.example.marcelba.mystudyschedule;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.SimpleCursorAdapter;
@@ -25,6 +27,7 @@ public class NewTask extends ActionBarActivity {
 
         this.spAsigTarea = (Spinner) findViewById(R.id.SnAsignatura);
         loadSpinnerAsignaturas();
+
     }
 
     @Override
@@ -50,9 +53,10 @@ public class NewTask extends ActionBarActivity {
     }
 
 
-
-    /** Save New Task.**/
-    public void saveNewTask(View v){
+    /**
+     * Save New Task.*
+     */
+    public void saveNewTask(View v) {
 
         Intent newView = new Intent(this, Tasks.class); //preparamos la view que queremos lanzar
 
@@ -72,15 +76,27 @@ public class NewTask extends ActionBarActivity {
         RatingBar RatTarea = (RatingBar) findViewById(R.id.RatingTarea);
         Float addRatTarea = RatTarea.getRating();
 
-        Inicio.db.AddTask(addNuevaTarea,addDescTarea,addFechaTarea,addRatTarea,addAsigTarea );
+        Inicio.db.AddTask(addNuevaTarea, addDescTarea, addFechaTarea, addRatTarea, addAsigTarea);
         startActivity(newView);
 
     }
 
 
-    private void loadSpinnerAsignaturas()  {
+    private void loadSpinnerAsignaturas() {
 
         Cursor c = Inicio.db.ReadSubject();
+
+      /* while(c.moveToNext()) {
+
+        }
+
+        Spinner spinner = new Spinner(this);
+        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, c); //selected item will look like a spinner set from XML
+        spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(spinnerArrayAdapter);
+
+
+
         String[] fromColumns = {Inicio.db.DB_SUBJECTS_COL_NAME};
         int test = c.getCount();
         int [] toView = {R.id.SnAsignatura};
@@ -94,7 +110,7 @@ public class NewTask extends ActionBarActivity {
                 0
         );
         Spinner spAsignaturas = (Spinner) findViewById(R.id.SnAsignatura);
-        spAsignaturas.setAdapter(adapter);
+        spAsignaturas.setAdapter(adapter);*/
 
     }
 

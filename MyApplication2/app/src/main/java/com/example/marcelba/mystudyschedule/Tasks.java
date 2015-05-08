@@ -10,8 +10,7 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
-public class Tasks extends ActionBarActivity  {
-
+public class Tasks extends ActionBarActivity {
 
 
     ListView noteTask;
@@ -22,11 +21,9 @@ public class Tasks extends ActionBarActivity  {
         setContentView(R.layout.activity_tareas);
 
 
-
-
         Cursor c = Inicio.db.ReadTask();
         String[] fromColumns = {Inicio.db.DB_TASK_COL_NAME};
-        int [] toView = {R.id.ElementTarea};
+        int[] toView = {R.id.ElementTarea};
 
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(
                 this,
@@ -68,13 +65,13 @@ public class Tasks extends ActionBarActivity  {
             noteTask = (ListView)findViewById(R.id.listElementsTask);
             noteTask.setAdapter(adapter);*/
             //noteTask.setOnItemClickListener(this);
-                       return true;
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    public void gotoNuevaTarea(View v){
+    public void gotoNuevaTarea(View v) {
         Intent newView = new Intent(this, NewTask.class); //preparamos la view que queremos lanzar
         startActivity(newView);
 

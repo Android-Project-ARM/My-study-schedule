@@ -28,13 +28,10 @@ public class NewSubject extends ActionBarActivity implements AdapterView.OnItemS
     private Spinner spMinutosFinal01;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nueva_asignatura);
-
 
 
         this.spDia01 = (Spinner) findViewById(R.id.SpDia01);
@@ -74,47 +71,49 @@ public class NewSubject extends ActionBarActivity implements AdapterView.OnItemS
     }
 
 
+    /**
+     * Populate the Spinner.
+     */
+    private void loadSpinnerDias() {
+
+        // Create an ArrayAdapter using the string array and a default spinner
+        // layout
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.Dias, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        this.spDia01.setAdapter(adapter);
+    }
+
+    private void loadSpinnerHoras() {
+
+        // Create an ArrayAdapter using the string array and a default spinner
+        // layout
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.Horas, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        this.spHoraInicio01.setAdapter(adapter);
+        this.spHoraFinal01.setAdapter(adapter);
+    }
+
+    private void loadSpinnerMinutos() {
+
+        // Create an ArrayAdapter using the string array and a default spinner
+        // layout
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.Minutos, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        this.spMinutosInicio01.setAdapter(adapter);
+        this.spMinutosFinal01.setAdapter(adapter);
+    }
 
 
-        /**
-         * Populate the Spinner.
-         */
-        private void loadSpinnerDias()  {
-
-            // Create an ArrayAdapter using the string array and a default spinner
-            // layout
-            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.Dias, android.R.layout.simple_spinner_item);
-            // Specify the layout to use when the list of choices appears
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            // Apply the adapter to the spinner
-           this.spDia01.setAdapter(adapter);
-        }
-        private void loadSpinnerHoras()  {
-
-            // Create an ArrayAdapter using the string array and a default spinner
-            // layout
-            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.Horas, android.R.layout.simple_spinner_item);
-            // Specify the layout to use when the list of choices appears
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            // Apply the adapter to the spinner
-            this.spHoraInicio01.setAdapter(adapter);
-            this.spHoraFinal01.setAdapter(adapter);
-        }
-        private void loadSpinnerMinutos()  {
-
-            // Create an ArrayAdapter using the string array and a default spinner
-            // layout
-            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.Minutos, android.R.layout.simple_spinner_item);
-            // Specify the layout to use when the list of choices appears
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            // Apply the adapter to the spinner
-            this.spMinutosInicio01.setAdapter(adapter);
-            this.spMinutosFinal01.setAdapter(adapter);
-        }
-
-
-    /** Save New Subject.**/
-    public void saveNewSubject (View newAsignatura){
+    /**
+     * Save New Subject.*
+     */
+    public void saveNewSubject(View newAsignatura) {
 
         EditText Asignatura = (EditText) findViewById(R.id.EtAsignatura);
         String AsignturaNombre = Asignatura.getText().toString();
@@ -145,18 +144,15 @@ public class NewSubject extends ActionBarActivity implements AdapterView.OnItemS
         //Log.i("Hora Inicio",AsignaturaHoraInicio +":"+AsignaturaMinuotsInicio );
         //Log.i("Hora Final",AsignaturaHoraFinal +":"+AsignaturaMinuotsFinal );
 
-        Inicio.cal.IntroduceNewSubject(this,Utils.Month(AsignaturaDia),Utils.dayOfTheMonth(AsignaturaDia),AsignaturaHoraInicio,AsignaturaMinuotsInicio,AsignaturaHoraFinal,AsignaturaMinuotsFinal,AsignturaNombre,"Profesor: "+AsignaturaProfesor);
+        Inicio.cal.IntroduceNewSubject(this, Utils.Month(AsignaturaDia), Utils.dayOfTheMonth(AsignaturaDia), AsignaturaHoraInicio, AsignaturaMinuotsInicio, AsignaturaHoraFinal, AsignaturaMinuotsFinal, AsignturaNombre, "Profesor: " + AsignaturaProfesor);
 
         /** Guardamos la assignatura en una mini BD para el spinner **/
 
         Inicio.db.AddSubject(AsignturaNombre);
 
 
-
         Intent Subjects = new Intent(this, Subjects.class);
         startActivity(Subjects);
-
-
 
 
     }

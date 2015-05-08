@@ -11,9 +11,10 @@ public class NoIdCursorWrapper extends CursorWrapper {
 
     /**
      * Create a NoIdCursorWrapper using the alias column index.
-     * @param c the cursor to wrap
+     *
+     * @param c             the cursor to wrap
      * @param idColumnIndex the column index to use as the _id column
-    alias
+     *                      alias
      */
     public NoIdCursorWrapper(Cursor c, int idColumnIndex) {
         super(c);
@@ -22,7 +23,8 @@ public class NoIdCursorWrapper extends CursorWrapper {
 
     /**
      * Create a NoIdCursorWrapper using the alias column name.
-     * @param c the cursor to wrap
+     *
+     * @param c            the cursor to wrap
      * @param idColumnName the column name to use as the _id column alias
      */
     public NoIdCursorWrapper(Cursor c, String idColumnName) {
@@ -37,16 +39,20 @@ public class NoIdCursorWrapper extends CursorWrapper {
             index = idColumnIndex;
         }
         return index;
-    };
+    }
+
+    ;
 
 
     @Override
     public int getColumnIndexOrThrow(String columnName) throws IllegalArgumentException {
         int index = getColumnIndex(columnName);
-        if (index>=0) {
+        if (index >= 0) {
             return index;
         }
         // let the AbstractCursor generate the exception
         return super.getColumnIndexOrThrow(columnName);
-    };
+    }
+
+    ;
 }
