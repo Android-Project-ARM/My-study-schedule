@@ -54,29 +54,12 @@ public class Tasks extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-       /*     db.AddTask("hola");
-
-            Cursor c = db.ReadTask();
-
-            String[] fromColumns = {db.DB_TASK_COL_NAME};
-            int[] toViews = {R.id.listTasks};
-
-            SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.task_list,c,fromColumns,toViews,0);
-            noteTask = (ListView)findViewById(R.id.listElementsTask);
-            noteTask.setAdapter(adapter);*/
-            //noteTask.setOnItemClickListener(this);
+            Intent newView = new Intent(this, NewTask.class); //preparamos la view que queremos lanzar
+            startActivity(newView);
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
-
-    public void gotoNuevaTarea(View v) {
-        Intent newView = new Intent(this, NewTask.class); //preparamos la view que queremos lanzar
-        startActivity(newView);
-
-
-    }
-
 
 }

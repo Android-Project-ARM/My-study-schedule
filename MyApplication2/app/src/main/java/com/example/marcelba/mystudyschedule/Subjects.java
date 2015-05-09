@@ -79,17 +79,12 @@ public class Subjects extends ActionBarActivity implements AdapterView.OnItemCli
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent newView = new Intent(this, NewSubject.class); //preparamos la view que queremos lanzar
+            startActivity(newView);
             return true;
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void gotoNuevaAsignatura(View v) {
-        Intent newView = new Intent(this, NewSubject.class); //preparamos la view que queremos lanzar
-        startActivity(newView);
-
-
     }
 
     @Override

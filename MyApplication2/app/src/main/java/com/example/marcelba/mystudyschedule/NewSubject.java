@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 
-public class NewSubject extends ActionBarActivity implements AdapterView.OnItemSelectedListener {
+public class NewSubject extends ActionBarActivity {
 
     final public static String NewAsigntura = "com.example.marcelba.mystudyschedule.NewAsigntura";
     final public static String NewAsignturaProfesor = "com.example.marcelba.mystudyschedule.NewAsignturaProfesor";
@@ -65,6 +65,7 @@ public class NewSubject extends ActionBarActivity implements AdapterView.OnItemS
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            saveNewSubject(item.getActionView());
             return true;
         }
 
@@ -114,7 +115,7 @@ public class NewSubject extends ActionBarActivity implements AdapterView.OnItemS
     /**
      * Save New Subject.*
      */
-    public void saveNewSubject(View newAsignatura) {
+    private void saveNewSubject(View newAsignatura) {
 
         EditText Asignatura = (EditText) findViewById(R.id.EtAsignatura);
         String AsignturaNombre = Asignatura.getText().toString();
@@ -159,14 +160,4 @@ public class NewSubject extends ActionBarActivity implements AdapterView.OnItemS
 
     }
 
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
 }

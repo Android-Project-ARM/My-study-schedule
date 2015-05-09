@@ -54,6 +54,7 @@ public class NewTask extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            saveNewTask(item.getActionView());
             return true;
         }
 
@@ -64,7 +65,7 @@ public class NewTask extends ActionBarActivity {
     /**
      * Save New Task.*
      */
-    public void saveNewTask(View v) {
+    private void saveNewTask(View v) {
 
          Intent newView = new Intent(this, Tasks.class); //preparamos la view que queremos lanzar
 
