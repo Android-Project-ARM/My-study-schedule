@@ -7,16 +7,10 @@
     tools:context="com.example.marcelba.mystudyschedule.NewSubject"
     android:animateLayoutChanges="true">
 
-
-
-
-
-
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/TvAsignatura"
         android:id="@+id/TvAsignatura"
         android:layout_alignParentTop="true"
@@ -28,16 +22,15 @@
         android:layout_height="wrap_content"
         android:id="@+id/EtAsignatura"
         android:layout_below="@+id/TvAsignatura"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentLeft="false"
         android:layout_alignParentStart="true"
         android:singleLine="true"
-        android:layout_toLeftOf="@+id/SpColor"
-        android:layout_toStartOf="@+id/SpColor" />
+        android:layout_alignRight="@+id/SpDia01" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/TvProfesor"
         android:id="@+id/TvProfesor"
         android:layout_below="@+id/EtAsignatura"
@@ -49,7 +42,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/EtProfesor"
         android:layout_below="@+id/TvProfesor"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentLeft="false"
         android:layout_alignParentStart="true"
         android:singleLine="true"
         android:layout_alignRight="@+id/EtAsignatura"
@@ -59,73 +52,104 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="@string/TvColor"
-        android:id="@+id/TvColor"
-        android:layout_alignTop="@+id/TvAsignatura"
-        android:layout_alignRight="@+id/SpColor"
-        android:layout_alignEnd="@+id/SpColor"
-        android:layout_alignParentRight="true"/>
-
-    <Spinner
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:id="@+id/SpColor"
-        android:background="#00ff23"
-        android:layout_alignTop="@+id/EtAsignatura"
-        android:layout_alignRight="@+id/SpDia01"
-        android:layout_alignEnd="@+id/SpDia01"
-        android:layout_alignParentRight="true"/>
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/TvHorario"
+        android:id="@+id/TvHorrario"
+        android:singleLine="false"
+        android:layout_below="@+id/EtProfesor"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="@string/TvHorario"
-        android:id="@+id/TvHorrario"
-        android:layout_below="@+id/EtProfesor"
-        android:layout_marginTop="31dp"
-        android:singleLine="false" />
+        android:text="Día"
+        android:id="@+id/textView3"
+        android:layout_below="@+id/TvHorrario"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Spinner
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:id="@+id/SpDia01"
-       android:layout_below="@+id/TvHorrario"
-       android:layout_alignParentLeft="true"
-       android:layout_alignParentStart="true" />
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Hora de inicio"
+        android:id="@+id/textView4"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Spinner
-       android:layout_width="wrap_content"
+       android:layout_width="70dp"
        android:layout_height="wrap_content"
        android:id="@+id/SpHoraInicio01"
-       android:layout_below="@+id/SpDia01"
-       android:layout_alignParentLeft="true"
-       android:layout_alignParentStart="true" />
+        android:layout_below="@+id/textView4"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
       <Spinner
-          android:layout_width="wrap_content"
+          android:layout_width="70dp"
           android:layout_height="wrap_content"
           android:id="@+id/SpMinutosInicio01"
-          android:layout_below="@+id/SpHoraInicio01"
-          android:layout_alignParentLeft="true"
-          android:layout_alignParentStart="true" />
+          android:layout_alignBottom="@+id/SpHoraInicio01"
+          android:layout_toRightOf="@+id/textView4"
+          android:layout_toEndOf="@+id/textView4" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Hora de finalilación"
+        android:id="@+id/textView5"
+        android:layout_marginTop="34dp"
+        android:layout_below="@+id/SpHoraInicio01"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:id="@+id/SpHoraFinal01"
-        android:layout_below="@+id/SpMinutosInicio01"
+        android:layout_below="@+id/textView5"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:id="@+id/SpMinutosFinal01"
-        android:layout_below="@+id/SpHoraFinal01"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/textView5"
+        android:layout_alignLeft="@+id/SpMinutosInicio01"
+        android:layout_alignStart="@+id/SpMinutosInicio01" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text=":"
+        android:id="@+id/textView6"
+        android:layout_alignTop="@+id/SpHoraInicio01"
+        android:layout_alignLeft="@+id/textView7"
+        android:layout_alignStart="@+id/textView7" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text=":"
+        android:id="@+id/textView7"
+        android:layout_alignTop="@+id/SpHoraFinal01"
+        android:layout_toRightOf="@+id/SpHoraFinal01"
+        android:layout_toEndOf="@+id/SpHoraFinal01" />
 
 
 </RelativeLayout>

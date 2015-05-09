@@ -13,8 +13,8 @@
         <ImageView
             android:id="@+id/list_image"
             android:contentDescription="@string/app_name"
-            android:layout_width="60dip"
-            android:layout_height="60dip"
+            android:layout_width="@dimen/imgAsignatura"
+            android:layout_height="@dimen/imgAsignatura"
             android:src="@drawable/ic_action_event"
             />
     </LinearLayout>
@@ -22,16 +22,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="75dip"
-        android:textSize="25dip"
-        android:id="@+id/SubjectTitle"/>
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/SubjectTitle"
+        android:paddingTop="@dimen/topPadding"
+        android:text="hola"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="15dip"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_below="@+id/SubjectTitle"
         android:layout_alignLeft="@+id/SubjectTitle"
         android:layout_centerHorizontal="true"
-             android:id="@+id/SubjectDay" />
+        android:id="@+id/SubjectDay"
+        android:text="hola"
+        />
 
 </RelativeLayout>
 

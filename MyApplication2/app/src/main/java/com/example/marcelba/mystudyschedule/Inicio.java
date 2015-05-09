@@ -88,10 +88,10 @@ public class Inicio extends ActionBarActivity implements Button.OnClickListener 
                 intent = new Intent(this, Tasks.class);
                 break;
             case R.id.evaluationButton:
-                Utils.ShowDialog(this,R.string.in_development);
-                return;
-                //intent = new Intent(this, Evaluation.class);
-                //break;
+                //Utils.ShowDialog(this,R.string.in_development);
+                //return;
+                intent = new Intent(this, Evaluation.class);
+                break;
             default:
                 intent = new Intent(this, Inicio.class);
                 break;

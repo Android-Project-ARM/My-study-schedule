@@ -7,6 +7,8 @@
     <!-- Tamaños -->
     <dimen name="TextoBotonesHome">21sp</dimen>
     <dimen name="MarginBotonesHome">5dp</dimen>
+    <dimen name="topPadding">5dp</dimen>
+    <dimen name="imgAsignatura">50dip</dimen>
 
 
 </resources>

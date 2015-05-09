@@ -41,5 +41,9 @@
     <string name="title_activity_nueva_tarea">NuevaTarea</string>
     <string name="title_activity_detalle_tareas">detalle_tareas</string>
 
+    <!-- Error Messages -->
+    <string name="no_subjects_yet">No hi ha assignatures disponibles</string>
+    <string name="in_development">En desenvolupament</string>
+    <string name="under">Actualment l\'equip de MyStudySchedule està treballant en el desenvolupament d\'aquesta funció.</string>
 
 </resources>

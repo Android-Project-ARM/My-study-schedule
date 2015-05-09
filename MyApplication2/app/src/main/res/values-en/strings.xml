@@ -42,4 +42,8 @@
     <string name="title_activity_detalle_tareas">Subjects Description</string>
 
 
+    <!-- Error Messages -->
+    <string name="no_subjects_yet">No subjects available</string>
+    <string name="in_development">Developing</string>
+    <string name="under">MyStudySchedule team currently is working on the development of this function.</string>
 </resources>
