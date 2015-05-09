@@ -5,6 +5,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin" tools:context=".Inicio"
     android:orientation="vertical"
+    android:animateLayoutChanges="true"
+
    >
 
     <LinearLayout
@@ -17,14 +19,24 @@
             android:layout_height="match_parent"
             android:layout_weight="0.4"
             android:text="@string/horary"
-            android:id="@+id/horaryButton"/>
+            android:id="@+id/horaryButton"
+            android:background="@drawable/buttonshape"
+            android:textColor="@color/blancoBotones"
+            android:textSize="@dimen/TextoBotonesHome"
+            android:layout_margin="@dimen/MarginBotonesHome"
+            android:elevation="2dp"/>
 
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.4"
             android:text="@string/subjects"
-            android:id="@+id/subjectsButton"/>
+            android:id="@+id/subjectsButton"
+            android:background="@drawable/buttonshape"
+            android:textColor="@color/blancoBotones"
+            android:textSize="@dimen/TextoBotonesHome"
+            android:layout_margin="@dimen/MarginBotonesHome"
+            android:elevation="2dp"/>
         </LinearLayout>
 
     <LinearLayout
@@ -37,14 +49,24 @@
         android:layout_height="match_parent"
         android:layout_weight="0.4"
         android:text="@string/Tasks"
-        android:id="@+id/tasksButton"/>
+        android:id="@+id/tasksButton"
+        android:background="@drawable/buttonshape"
+        android:textColor="@color/blancoBotones"
+        android:textSize="@dimen/TextoBotonesHome"
+        android:layout_margin="@dimen/MarginBotonesHome"
+        android:elevation="2dp"/>
 
     <Button
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="0.4"
         android:text="@string/evaluation"
-        android:id="@+id/evaluationButton"/>
+        android:id="@+id/evaluationButton"
+        android:background="@drawable/buttonshape"
+        android:textColor="@color/blancoBotones"
+        android:textSize="@dimen/TextoBotonesHome"
+        android:layout_margin="@dimen/MarginBotonesHome"
+        android:elevation="2dp"/>
 
     </LinearLayout>
 
