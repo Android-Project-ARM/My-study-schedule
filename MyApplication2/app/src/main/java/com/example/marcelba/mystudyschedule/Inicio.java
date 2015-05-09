@@ -1,14 +1,17 @@
 package com.example.marcelba.mystudyschedule;
 
+import android.content.ContentUris;
 import android.content.Intent;
-import android.database.Cursor;
-import android.support.v4.app.DialogFragment;
+import android.net.Uri;
+import android.provider.CalendarContract;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+
+import java.util.Calendar;
 
 
 public class Inicio extends ActionBarActivity implements Button.OnClickListener {
@@ -67,13 +70,18 @@ public class Inicio extends ActionBarActivity implements Button.OnClickListener 
         Intent intent = null;
         switch (v.getId()) {
             case R.id.horaryButton:
-                intent = new Intent(this, Horary.class);
-                break;
+                Uri.Builder builder = CalendarContract.CONTENT_URI.buildUpon();
+                builder.appendPath("time");
+                ContentUris.appendId(builder, Calendar.getInstance().getTimeInMillis());
+                intent = new Intent(Intent.ACTION_VIEW)
+                        .setData(builder.build());
+                startActivity(intent);
+                return;
             case R.id.subjectsButton:
                 intent = new Intent(this, Subjects.class);
                 break;
             case R.id.tasksButton:
-                if (Inicio.db.ReadSubject().getCount() == 0) {
+                if (cal.GetSubjects(this).getCount() == 0) {
                     Utils.ShowDialog(this,R.string.no_subjects_yet);
                     return;
                 }

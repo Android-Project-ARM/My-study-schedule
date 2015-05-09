@@ -18,11 +18,11 @@ public class DBProxy extends SQLiteOpenHelper {
     final public static String DB_NAME = "StudySchedule.db";
     final public static int DB_VERSION = 1;
 
-    final public static String DB_SUBJECTS_TABLE_NAME = "subjects";
+ /*   final public static String DB_SUBJECTS_TABLE_NAME = "subjects";
     final public static String DB_SUBJECTS_COL_ID = BaseColumns._ID;
     final public static String DB_SUBJECTS_COL_NAME = "name";
     final public static String DB_SUBJECTS_COL_COLOR = "color";
-    final public static String DB_SUBJECTS_COL_TEACHER = "teacher";
+    final public static String DB_SUBJECTS_COL_TEACHER = "teacher";*/
 
 
     final public static String DB_TASK_TABLE_NAME = "ToDo";
@@ -41,7 +41,7 @@ public class DBProxy extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE " + DB_SUBJECTS_TABLE_NAME + "(" + DB_SUBJECTS_COL_ID + " INTEGER PRIMARY KEY," + DB_SUBJECTS_COL_NAME + ")");
+       // db.execSQL("CREATE TABLE " + DB_SUBJECTS_TABLE_NAME + "(" + DB_SUBJECTS_COL_ID + " INTEGER PRIMARY KEY," + DB_SUBJECTS_COL_NAME + ")");
         db.execSQL("CREATE TABLE " + DB_TASK_TABLE_NAME + "(" +
                 DB_TASK_COL_ID + " INTEGER PRIMARY KEY," +
                 DB_TASK_COL_NAME + " TEXT," +
@@ -56,23 +56,23 @@ public class DBProxy extends SQLiteOpenHelper {
 
     }
 
-    public void AddSubject(String nom) {
+   /* public void AddSubject(String nom, int subjectId) {
 
         Log.i("Asignatura", nom);
 
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.putNull(DB_SUBJECTS_COL_ID);
+        values.put(DB_SUBJECTS_COL_ID,subjectId);
         values.put(DB_SUBJECTS_COL_NAME, nom);
         db.insert(DB_SUBJECTS_TABLE_NAME, null, values);
 
-    }
+    }*/
 
-    public Cursor ReadSubject() {
+   /* public Cursor ReadSubject() {
         SQLiteDatabase db = getReadableDatabase();
         String[] columns = new String[]{DB_SUBJECTS_COL_ID, DB_SUBJECTS_COL_NAME};
         return db.query(DB_SUBJECTS_TABLE_NAME, columns, null, null, null, null, null);
-    }
+    }*/
 
 
     public Cursor ReadTask() {

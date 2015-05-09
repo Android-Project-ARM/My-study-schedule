@@ -2,22 +2,30 @@ package com.example.marcelba.mystudyschedule;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.MatrixCursor;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class NewTask extends ActionBarActivity {
 
     private Spinner spAsigTarea;
+    List<Integer> subjectsId = new ArrayList<Integer>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +66,7 @@ public class NewTask extends ActionBarActivity {
      */
     public void saveNewTask(View v) {
 
-        Intent newView = new Intent(this, Tasks.class); //preparamos la view que queremos lanzar
+         Intent newView = new Intent(this, Tasks.class); //preparamos la view que queremos lanzar
 
         EditText NuevaTarea = (EditText) findViewById(R.id.EtNuevaTarea);
         String addNuevaTarea = NuevaTarea.getText().toString();
@@ -70,7 +78,7 @@ public class NewTask extends ActionBarActivity {
         String addFechaTarea = FechaTarea.getText().toString();
 
         Spinner AsigTarea = (Spinner) findViewById(R.id.SnAsignatura);
-        Integer addAsigTarea = AsigTarea.getSelectedItemPosition();
+        Integer addAsigTarea = subjectsId.get((int) AsigTarea.getSelectedItemId());
 
 
         RatingBar RatTarea = (RatingBar) findViewById(R.id.RatingTarea);
@@ -84,33 +92,20 @@ public class NewTask extends ActionBarActivity {
 
     private void loadSpinnerAsignaturas() {
 
-        Cursor c = Inicio.db.ReadSubject();
+        Cursor c = Inicio.cal.GetSubjects(this);
 
-      /* while(c.moveToNext()) {
 
+        ArrayList<String> options=new ArrayList<String>();
+        while (c.moveToNext()) {
+            //processedCursor.addRow(new Object[]{c.getLong(CalendarController.PROJECTION_IDI_INDEX), c.getString(CalendarController.PROJECTION_TITLE_INDEX), Utils.GetWeekDay(c.getLong(CalendarController.PROJECTION_BEGIN_INDEX))});
+            options.add(c.getString(CalendarController.PROJECTION_TITLE_INDEX));
+            subjectsId.add((int)c.getLong(CalendarController.PROJECTION_IDI_INDEX));
         }
 
-        Spinner spinner = new Spinner(this);
-        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, c); //selected item will look like a spinner set from XML
+        Spinner spinner =  (Spinner) findViewById(R.id.SnAsignatura);
+        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, options); //selected item will look like a spinner set from XML
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(spinnerArrayAdapter);
-
-
-
-        String[] fromColumns = {Inicio.db.DB_SUBJECTS_COL_NAME};
-        int test = c.getCount();
-        int [] toView = {R.id.SnAsignatura};
-
-        SimpleCursorAdapter adapter = new SimpleCursorAdapter(
-                this,
-                R.layout.activity_nueva_tarea,
-                c,
-                fromColumns,
-                toView,
-                0
-        );
-        Spinner spAsignaturas = (Spinner) findViewById(R.id.SnAsignatura);
-        spAsignaturas.setAdapter(adapter);*/
 
     }
 

@@ -85,7 +85,7 @@ public class CalendarController {
         calID = id;
     }
 
-    public void IntroduceNewSubject(Context ctx, int month, int day, int startHour, int startMinute, int endHour, int endMinute, String title, String description) {
+    public int IntroduceNewSubject(Context ctx, int month, int day, int startHour, int startMinute, int endHour, int endMinute, String title, String description) {
 
         long startMillis = 0;
         long endMillis = 0;
@@ -109,7 +109,7 @@ public class CalendarController {
         Uri uri = cr.insert(CalendarContract.Events.CONTENT_URI, values);
 
         long eventID = Long.parseLong(uri.getLastPathSegment());
-
+        return (int) eventID;
     }
 
     private static final String DEBUG_TAG = "MyActivity";
