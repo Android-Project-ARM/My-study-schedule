@@ -10,12 +10,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
-import android.widget.TextView;
 
 public class Tasks extends ActionBarActivity  implements AdapterView.OnItemClickListener {
 
 
-    ListView noteTask;
+    private ListView noteTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +22,7 @@ public class Tasks extends ActionBarActivity  implements AdapterView.OnItemClick
         setContentView(R.layout.activity_tareas);
 
 
-        Cursor c = Inicio.db.ReadTask();
+        Cursor c = Inicio.db.ReadTasks();
         String[] fromColumns = {Inicio.db.DB_TASK_COL_NAME,Inicio.db.DB_TASK_COL_ENDDATE};
         int[] toView = {R.id.ElementTarea,R.id.ElementTareaFecha};
 
@@ -70,7 +69,6 @@ public class Tasks extends ActionBarActivity  implements AdapterView.OnItemClick
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent i = new Intent(this, NewTask.class);
         i.putExtra("id", id);
-        i.putExtra("name", ((TextView) view.findViewById(R.id.ElementTarea)).getText().toString());
         startActivity(i);
     }
 }

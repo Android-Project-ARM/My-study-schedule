@@ -2,21 +2,15 @@ package com.example.marcelba.mystudyschedule;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.MatrixCursor;
 import android.os.Bundle;
-import android.provider.CalendarContract;
-import android.support.v4.app.DialogFragment;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RatingBar;
-import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
@@ -25,17 +19,47 @@ import java.util.List;
 
 public class NewTask extends ActionBarActivity {
 
-    private Spinner spAsigTarea;
     List<Integer> subjectsId = new ArrayList<Integer>();
+    private EditText NuevaTarea;
+    private EditText DescTarea;
+    private CheckBox DoneTarea;
+    private EditText FechaTarea;
+    private Spinner AsigTarea;
+    private RatingBar RatTarea;
+    private DBProxy db = Inicio.db;
+    private Long idTask = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nueva_tarea);
 
+        NuevaTarea = (EditText) findViewById(R.id.EtNuevaTarea);
+        DescTarea = (EditText) findViewById(R.id.EtDescTarea);
+        DoneTarea = (CheckBox) findViewById(R.id.TvDone);
+        FechaTarea = (EditText) findViewById(R.id.EtFechaTarea);
+        AsigTarea = (Spinner) findViewById(R.id.SnAsignatura);
+        RatTarea = (RatingBar) findViewById(R.id.RatingTarea);
 
-        this.spAsigTarea = (Spinner) findViewById(R.id.SnAsignatura);
+        AsigTarea = (Spinner) findViewById(R.id.SnAsignatura);
         loadSpinnerAsignaturas();
+
+        Bundle extras = getIntent().getExtras();
+
+        if(extras != null){
+            idTask =  extras.getLong("id",20);
+            Cursor c = db.ReadTask(idTask);
+            while (c.moveToNext()) {
+                NuevaTarea.setText(c.getString(c.getColumnIndex(db.DB_TASK_COL_NAME)));
+                DescTarea.setText(c.getString(c.getColumnIndex(db.DB_TASK_COL_DESC)));
+                DoneTarea.setChecked(false);
+                int index = subjectsId.indexOf(c.getInt(c.getColumnIndex(db.DB_TASK_COL_SUBJECT_ID)));
+                AsigTarea.setSelection(index);
+                FechaTarea.setText(c.getString(c.getColumnIndex(db.DB_TASK_COL_ENDDATE)));
+                RatTarea.setRating(c.getFloat(c.getColumnIndex(db.DB_TASK_COL_PRIORITY)));
+
+            }
+        }
 
     }
 
@@ -55,7 +79,7 @@ public class NewTask extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            saveNewTask(item.getActionView());
+            saveTask(item.getActionView());
             return true;
         }
 
@@ -66,32 +90,28 @@ public class NewTask extends ActionBarActivity {
     /**
      * Save New Task.*
      */
-    private void saveNewTask(View v) {
+    private void saveTask(View v) {
 
-         Intent newView = new Intent(this, Tasks.class); //preparamos la view que queremos lanzar
+        Intent newView = new Intent(this, Tasks.class); //preparamos la view que queremos lanzar
 
-        EditText NuevaTarea = (EditText) findViewById(R.id.EtNuevaTarea);
         String addNuevaTarea = NuevaTarea.getText().toString();
 
-        EditText DescTarea = (EditText) findViewById(R.id.EtDescTarea);
         String addDescTarea = DescTarea.getText().toString();
 
-        boolean tareaEcha = ((CheckBox) findViewById(R.id.TvDone)).isChecked();
-        Integer addTareaEcha = tareaEcha ? 1 : 0;
+        Integer addTareaEcha = DoneTarea.isChecked() ? 1 : 0;
 
-        EditText FechaTarea = (EditText) findViewById(R.id.EtFechaTarea);
         String addFechaTarea = FechaTarea.getText().toString();
 
-        Spinner AsigTarea = (Spinner) findViewById(R.id.SnAsignatura);
         Integer addAsigTarea = subjectsId.get((int) AsigTarea.getSelectedItemId());
 
-
-        RatingBar RatTarea = (RatingBar) findViewById(R.id.RatingTarea);
         Float addRatTarea = RatTarea.getRating();
 
-        Inicio.db.AddTask(addNuevaTarea, addDescTarea, addFechaTarea, addRatTarea, addAsigTarea,addTareaEcha);
+        if(idTask != null){
+            Inicio.db.UpdateTask(idTask,addNuevaTarea, addDescTarea, addFechaTarea, addRatTarea, addAsigTarea, addTareaEcha);
+        }else{
+            Inicio.db.AddTask(addNuevaTarea, addDescTarea, addFechaTarea, addRatTarea, addAsigTarea, addTareaEcha);
+        }
         startActivity(newView);
-
     }
 
 
@@ -107,10 +127,9 @@ public class NewTask extends ActionBarActivity {
             subjectsId.add((int)c.getLong(CalendarController.PROJECTION_IDI_INDEX));
         }
 
-        Spinner spinner =  (Spinner) findViewById(R.id.SnAsignatura);
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, options); //selected item will look like a spinner set from XML
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(spinnerArrayAdapter);
+        AsigTarea.setAdapter(spinnerArrayAdapter);
 
     }
 

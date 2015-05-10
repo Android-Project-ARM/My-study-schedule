@@ -77,10 +77,16 @@ public class DBProxy extends SQLiteOpenHelper {
     }*/
 
 
-    public Cursor ReadTask() {
+    public Cursor ReadTasks() {
         SQLiteDatabase db = getReadableDatabase();
-        String[] columns = new String[]{DB_TASK_COL_ID, DB_TASK_COL_NAME,DB_TASK_COL_ENDDATE};
+        String[] columns = new String[]{DB_TASK_COL_ID, DB_TASK_COL_NAME,DB_TASK_COL_SUBJECT_ID,DB_TASK_COL_ENDDATE,DB_TASK_COL_PRIORITY,DB_TASK_COL_DESC,DB_TASK_COL_DONE};
         return db.query(DB_TASK_TABLE_NAME, columns, "TareaDone = ?",new String[] { "0" }, null, null, null);
+    }
+
+    public Cursor ReadTask(Long id){
+        SQLiteDatabase db = getReadableDatabase();
+        String[] columns = new String[]{DB_TASK_COL_ID, DB_TASK_COL_NAME,DB_TASK_COL_SUBJECT_ID,DB_TASK_COL_ENDDATE,DB_TASK_COL_PRIORITY,DB_TASK_COL_DESC,DB_TASK_COL_DONE};
+        return db.query(DB_TASK_TABLE_NAME, columns, DB_TASK_COL_ID+" = ?",new String[] { id+"" }, null, null, null);
     }
 
     public void AddTask(String addNuevaTarea, String addDescTarea, String addFechaTarea, Float addRatTarea, Integer addAsigTarea, Integer addTareaEcha) {
@@ -101,5 +107,22 @@ public class DBProxy extends SQLiteOpenHelper {
         values.put(DB_TASK_COL_DESC, addDescTarea);
         values.put(DB_TASK_COL_DONE, addTareaEcha);
         db.insert(DB_TASK_TABLE_NAME, null, values);
+    }
+
+    public void UpdateTask(Long id,String addNuevaTarea, String addDescTarea, String addFechaTarea, Float addRatTarea, Integer addAsigTarea, Integer addTareaEcha)
+    {
+        SQLiteDatabase db = getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(DB_TASK_COL_NAME, addNuevaTarea);
+        values.put(DB_TASK_COL_SUBJECT_ID, addAsigTarea);
+        values.put(DB_TASK_COL_ENDDATE, addFechaTarea);
+        values.put(DB_TASK_COL_PRIORITY, addRatTarea);
+        values.put(DB_TASK_COL_DESC, addDescTarea);
+        values.put(DB_TASK_COL_DONE, addTareaEcha);
+
+        String selection = DB_TASK_COL_ID + " LIKE ?";
+        String[] selectionArgs = { String.valueOf(id) };
+        db.update(DB_TASK_TABLE_NAME,values,selection,selectionArgs);
     }
 }
