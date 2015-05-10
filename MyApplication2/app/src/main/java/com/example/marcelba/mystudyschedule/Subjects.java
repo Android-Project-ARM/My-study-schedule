@@ -89,7 +89,7 @@ public class Subjects extends ActionBarActivity implements AdapterView.OnItemCli
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent i = new Intent(this, DetailsSubject.class);
+        Intent i = new Intent(this, NewSubject.class);
 
         i.putExtra("id", id);
         i.putExtra("title", ((TextView) view.findViewById(R.id.SubjectTitle)).getText().toString());

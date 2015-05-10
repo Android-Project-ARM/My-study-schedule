@@ -26,7 +26,7 @@
 
 
     <!-- Stings TextViews  -->
-
+    <string name="TvDone">Hecha</string>
     <string name="TvAsignatura">Asignatura</string>
     <string name="TvProfesor">Profesor</string>
     <string name="TvHorario">Horario Asignatura</string>

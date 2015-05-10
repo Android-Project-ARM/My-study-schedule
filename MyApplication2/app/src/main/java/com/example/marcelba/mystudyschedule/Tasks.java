@@ -7,10 +7,12 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
 
-public class Tasks extends ActionBarActivity {
+public class Tasks extends ActionBarActivity  implements AdapterView.OnItemClickListener {
 
 
     ListView noteTask;
@@ -22,19 +24,21 @@ public class Tasks extends ActionBarActivity {
 
 
         Cursor c = Inicio.db.ReadTask();
-        String[] fromColumns = {Inicio.db.DB_TASK_COL_NAME};
-        int[] toView = {R.id.ElementTarea};
+        String[] fromColumns = {Inicio.db.DB_TASK_COL_NAME,Inicio.db.DB_TASK_COL_ENDDATE};
+        int[] toView = {R.id.ElementTarea,R.id.ElementTareaFecha};
+
 
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(
                 this,
-                R.layout.activity_detalle_tarea,
+                R.layout.task_list,
                 c,
                 fromColumns,
                 toView,
                 0
         );
-        ListView list = (ListView) findViewById(R.id.listElementsTask);
+        ListView list = (ListView) findViewById(R.id.listTasks);
         list.setAdapter(adapter);
+        list.setOnItemClickListener(this);
     }
 
 
@@ -62,4 +66,11 @@ public class Tasks extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent i = new Intent(this, NewTask.class);
+        i.putExtra("id", id);
+        i.putExtra("name", ((TextView) view.findViewById(R.id.ElementTarea)).getText().toString());
+        startActivity(i);
+    }
 }

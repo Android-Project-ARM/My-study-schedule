@@ -13,7 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-    <TextView
+
+        <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -21,12 +22,19 @@
         android:id="@+id/TvNuevaTarea"
         />
 
-    <EditText
+        <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/EtNuevaTarea"
         android:lines="1"
         android:maxLines="1" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/TvDone"
+            android:id="@+id/TvDone" />
+
     </LinearLayout>
 
     <LinearLayout

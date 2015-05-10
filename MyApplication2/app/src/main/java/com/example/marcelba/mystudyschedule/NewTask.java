@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.SimpleCursorAdapter;
@@ -75,6 +76,9 @@ public class NewTask extends ActionBarActivity {
         EditText DescTarea = (EditText) findViewById(R.id.EtDescTarea);
         String addDescTarea = DescTarea.getText().toString();
 
+        boolean tareaEcha = ((CheckBox) findViewById(R.id.TvDone)).isChecked();
+        Integer addTareaEcha = tareaEcha ? 1 : 0;
+
         EditText FechaTarea = (EditText) findViewById(R.id.EtFechaTarea);
         String addFechaTarea = FechaTarea.getText().toString();
 
@@ -85,7 +89,7 @@ public class NewTask extends ActionBarActivity {
         RatingBar RatTarea = (RatingBar) findViewById(R.id.RatingTarea);
         Float addRatTarea = RatTarea.getRating();
 
-        Inicio.db.AddTask(addNuevaTarea, addDescTarea, addFechaTarea, addRatTarea, addAsigTarea);
+        Inicio.db.AddTask(addNuevaTarea, addDescTarea, addFechaTarea, addRatTarea, addAsigTarea,addTareaEcha);
         startActivity(newView);
 
     }

@@ -46,21 +46,14 @@
             android:parentActivityName=".Inicio" >
         </activity>
         <activity
-            android:name=".DetailsSubject"
-            android:label="@string/title_activity_detalle_asignatura"
-            android:parentActivityName=".Subjects" >
-        </activity>
-        <activity
             android:name=".NewSubject"
-            android:label="@string/title_activity_nueva_asignatura" >
+            android:label="@string/title_activity_nueva_asignatura"
+            android:parentActivityName=".Subjects">
         </activity>
         <activity
             android:name=".NewTask"
-            android:label="@string/title_activity_nueva_tarea" >
-        </activity>
-        <activity
-            android:name=".detalle_tareas"
-            android:label="@string/title_activity_detalle_tareas" >
+            android:label="@string/title_activity_nueva_tarea"
+            android:parentActivityName=".Tasks">
         </activity>
     </application>
 

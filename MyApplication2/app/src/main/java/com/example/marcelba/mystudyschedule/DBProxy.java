@@ -32,6 +32,7 @@ public class DBProxy extends SQLiteOpenHelper {
     final public static String DB_TASK_COL_ENDDATE = "TareaFechaEntrega";
     final public static String DB_TASK_COL_PRIORITY = "TareaPrioridad";
     final public static String DB_TASK_COL_DESC = "TareaDescripcion";
+    final public static String DB_TASK_COL_DONE = "TareaDone";
 
 
     public DBProxy(Context context) {
@@ -48,6 +49,7 @@ public class DBProxy extends SQLiteOpenHelper {
                 DB_TASK_COL_SUBJECT_ID + " INTEGER," +
                 DB_TASK_COL_ENDDATE + " TEXT," +
                 DB_TASK_COL_PRIORITY + " FLOAT," +
+                DB_TASK_COL_DONE + " INTEGER," +
                 DB_TASK_COL_DESC + " TEXT)");
     }
 
@@ -77,11 +79,11 @@ public class DBProxy extends SQLiteOpenHelper {
 
     public Cursor ReadTask() {
         SQLiteDatabase db = getReadableDatabase();
-        String[] columns = new String[]{DB_TASK_COL_ID, DB_TASK_COL_NAME};
-        return db.query(DB_TASK_TABLE_NAME, columns, null, null, null, null, null);
+        String[] columns = new String[]{DB_TASK_COL_ID, DB_TASK_COL_NAME,DB_TASK_COL_ENDDATE};
+        return db.query(DB_TASK_TABLE_NAME, columns, "TareaDone = ?",new String[] { "0" }, null, null, null);
     }
 
-    public void AddTask(String addNuevaTarea, String addDescTarea, String addFechaTarea, Float addRatTarea, Integer addAsigTarea) {
+    public void AddTask(String addNuevaTarea, String addDescTarea, String addFechaTarea, Float addRatTarea, Integer addAsigTarea, Integer addTareaEcha) {
 
 
         // Log.i("descripción", addDescTarea);
@@ -97,6 +99,7 @@ public class DBProxy extends SQLiteOpenHelper {
         values.put(DB_TASK_COL_ENDDATE, addFechaTarea);
         values.put(DB_TASK_COL_PRIORITY, addRatTarea);
         values.put(DB_TASK_COL_DESC, addDescTarea);
+        values.put(DB_TASK_COL_DONE, addTareaEcha);
         db.insert(DB_TASK_TABLE_NAME, null, values);
     }
 }

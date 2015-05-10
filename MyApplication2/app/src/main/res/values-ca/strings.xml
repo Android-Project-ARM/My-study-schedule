@@ -21,7 +21,7 @@
     <string name="title_activity_nueva_asignatura">Nova Assignatura</string>
 
     <!-- Stings TextViews  -->
-
+    <string name="TvDone">Feta</string>
     <string name="TvAsignatura">Assignatura</string>
     <string name="TvProfesor">Professor</string>
     <string name="TvHorario">Horari Assignatura</string>
