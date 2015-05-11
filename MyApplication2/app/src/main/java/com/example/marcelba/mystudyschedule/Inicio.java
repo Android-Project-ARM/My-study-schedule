@@ -82,7 +82,7 @@ public class Inicio extends ActionBarActivity implements Button.OnClickListener 
                 break;
             case R.id.tasksButton:
                 if (cal.GetSubjects(this).getCount() == 0) {
-                    Utils.ShowDialog(this,R.string.no_subjects_yet);
+                    Utils.ShowDialog(this,R.string.no_subjects_yet,false);
                     return;
                 }
                 intent = new Intent(this, Tasks.class);

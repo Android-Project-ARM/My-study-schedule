@@ -1,6 +1,7 @@
 package com.example.marcelba.mystudyschedule;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -22,11 +23,15 @@ public class NewSubject extends ActionBarActivity {
     final public static String NewAsignturaHoraIni = "com.example.marcelba.mystudyschedule.NewAsignturaHoraIni";
     final public static String NewAsignturaHoraFin = "com.example.marcelba.mystudyschedule.NewAsignturaHoraFin";
 
+    private EditText editTextSubject;
+    private EditText editTextTeacher;
     private Spinner spDia01;
     private Spinner spHoraInicio01;
     private Spinner spMinutosInicio01;
     private Spinner spHoraFinal01;
     private Spinner spMinutosFinal01;
+
+    private CalendarController cal = Inicio.cal;
 
 
     @Override
@@ -34,18 +39,19 @@ public class NewSubject extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nueva_asignatura);
 
-
-        this.spDia01 = (Spinner) findViewById(R.id.SpDia01);
-        this.spHoraInicio01 = (Spinner) findViewById(R.id.SpHoraInicio01);
-        this.spMinutosInicio01 = (Spinner) findViewById(R.id.SpMinutosInicio01);
-        this.spHoraFinal01 = (Spinner) findViewById(R.id.SpHoraFinal01);
-        this.spMinutosFinal01 = (Spinner) findViewById(R.id.SpMinutosFinal01);
+        editTextSubject = (EditText) findViewById(R.id.EtAsignatura);
+        editTextTeacher = (EditText) findViewById(R.id.EtProfesor);
+        spDia01 = (Spinner) findViewById(R.id.SpDia01);
+        spHoraInicio01 = (Spinner) findViewById(R.id.SpHoraInicio01);
+        spMinutosInicio01 = (Spinner) findViewById(R.id.SpMinutosInicio01);
+        spHoraFinal01 = (Spinner) findViewById(R.id.SpHoraFinal01);
+        spMinutosFinal01 = (Spinner) findViewById(R.id.SpMinutosFinal01);
 
         loadSpinnerDias();
         loadSpinnerHoras();
         loadSpinnerMinutos();
 
-
+        Bundle extras = getIntent().getExtras();
     }
 
 
@@ -84,7 +90,7 @@ public class NewSubject extends ActionBarActivity {
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
-        this.spDia01.setAdapter(adapter);
+        spDia01.setAdapter(adapter);
     }
 
     private void loadSpinnerHoras() {
@@ -95,8 +101,8 @@ public class NewSubject extends ActionBarActivity {
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
-        this.spHoraInicio01.setAdapter(adapter);
-        this.spHoraFinal01.setAdapter(adapter);
+        spHoraInicio01.setAdapter(adapter);
+        spHoraFinal01.setAdapter(adapter);
     }
 
     private void loadSpinnerMinutos() {
@@ -107,8 +113,8 @@ public class NewSubject extends ActionBarActivity {
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
-        this.spMinutosInicio01.setAdapter(adapter);
-        this.spMinutosFinal01.setAdapter(adapter);
+        spMinutosInicio01.setAdapter(adapter);
+        spMinutosFinal01.setAdapter(adapter);
     }
 
 
@@ -117,28 +123,19 @@ public class NewSubject extends ActionBarActivity {
      */
     private void saveNewSubject(View newAsignatura) {
 
-        EditText Asignatura = (EditText) findViewById(R.id.EtAsignatura);
-        String AsignturaNombre = Asignatura.getText().toString();
+        String AsignturaNombre = editTextSubject.getText().toString();
 
-        EditText Profesor = (EditText) findViewById(R.id.EtProfesor);
-        String AsignaturaProfesor = Profesor.getText().toString();
+        String AsignaturaProfesor = editTextSubject.getText().toString();
 
-        Spinner Dia = (Spinner) findViewById(R.id.SpDia01);
-        String AsignaturaDia = Dia.getSelectedItem().toString();
+        String AsignaturaDia = spDia01.getSelectedItem().toString();
 
+        int AsignaturaHoraInicio = Integer.parseInt(spHoraInicio01.getSelectedItem().toString());
 
-        Spinner HoraInicio = (Spinner) findViewById(R.id.SpHoraInicio01);
-        int AsignaturaHoraInicio = Integer.parseInt(HoraInicio.getSelectedItem().toString());
+        int AsignaturaMinuotsInicio = Integer.parseInt(spMinutosInicio01.getSelectedItem().toString());
 
-        Spinner MinutosInicio = (Spinner) findViewById(R.id.SpMinutosInicio01);
-        int AsignaturaMinuotsInicio = Integer.parseInt(MinutosInicio.getSelectedItem().toString());
+        int AsignaturaHoraFinal = Integer.parseInt(spHoraFinal01.getSelectedItem().toString());
 
-
-        Spinner HoraFinal = (Spinner) findViewById(R.id.SpHoraFinal01);
-        int AsignaturaHoraFinal = Integer.parseInt(HoraFinal.getSelectedItem().toString());
-
-        Spinner MinutosFinal = (Spinner) findViewById(R.id.SpMinutosFinal01);
-        int AsignaturaMinuotsFinal = Integer.parseInt(MinutosFinal.getSelectedItem().toString());
+        int AsignaturaMinuotsFinal = Integer.parseInt(spMinutosFinal01.getSelectedItem().toString());
 
         //Log.i("Asignatura",AsignturaNombre);
         //Log.i("Profesor",AsignaturaProfesor);
@@ -147,7 +144,7 @@ public class NewSubject extends ActionBarActivity {
         //Log.i("Hora Final",AsignaturaHoraFinal +":"+AsignaturaMinuotsFinal );
 
         //may overflow
-        int eventId = Inicio.cal.IntroduceNewSubject(this, Utils.Month(AsignaturaDia), Utils.dayOfTheMonth(AsignaturaDia), AsignaturaHoraInicio, AsignaturaMinuotsInicio, AsignaturaHoraFinal, AsignaturaMinuotsFinal, AsignturaNombre, "Profesor: " + AsignaturaProfesor);
+        int eventId = cal.IntroduceNewSubject(this, Utils.Month(AsignaturaDia), Utils.dayOfTheMonth(AsignaturaDia), AsignaturaHoraInicio, AsignaturaMinuotsInicio, AsignaturaHoraFinal, AsignaturaMinuotsFinal, AsignturaNombre, "Profesor: " + AsignaturaProfesor);
         Log.i("integerID", ""+eventId);
 
         /** Guardamos la assignatura en una mini BD para el spinner **/

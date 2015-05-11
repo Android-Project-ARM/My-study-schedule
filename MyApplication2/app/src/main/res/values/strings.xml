@@ -49,9 +49,10 @@
     <string name="title_activity_detalle_tareas">detalle_tareas</string>
 
 
-    <!-- Error Messages -->
+    <!-- Messages -->
     <string name="no_subjects_yet">No hay asignaturas disponibles</string>
     <string name="in_development">En desarrollo</string>
     <string name="under">Actualmente el equipo de MyStudySchedule está trabajando en el desarrollo de esta función.</string>
+    <string name="deleteSubject">Seguro que quieres borrar esta asignatura?</string>
 
 </resources>

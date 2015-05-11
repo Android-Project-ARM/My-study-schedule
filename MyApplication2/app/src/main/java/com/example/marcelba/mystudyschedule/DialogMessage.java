@@ -12,12 +12,13 @@ import android.os.Bundle;
  */
 public class DialogMessage extends DialogFragment {
 
-    public static DialogMessage newInstance(int message) {
+    public static DialogMessage newInstance(int message, boolean decision) {
         DialogMessage f = new DialogMessage();
 
         // Supply num input as an argument.
         Bundle args = new Bundle();
         args.putInt("message", message);
+        args.putBoolean("decision", decision);
         f.setArguments(args);
 
         return f;
@@ -26,25 +27,28 @@ public class DialogMessage extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         int message = getArguments().getInt("message");
+        final boolean decision = getArguments().getBoolean("decision");
 
-        return new AlertDialog.Builder(getActivity())
-                //.setIcon(R.drawable.alert_dialog_icon)
-                .setTitle(message)
-                .setPositiveButton("OK",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int whichButton) {
-                                Utils.dialogPositive();
-                            }
+        AlertDialog.Builder alertDialog =  new AlertDialog.Builder(getActivity());
+        alertDialog.setTitle(message);
+        alertDialog.setPositiveButton("OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        Utils.dialogPositive();
+                        if(decision){
+                            ((Subjects)getActivity()).DeleteCurrentSubject();
                         }
-                )
-               /* .setNegativeButton(R.string.alert_dialog_cancel,
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int whichButton) {
-                                ((FragmentAlertDialog)getActivity()).doNegativeClick();
-                            }
+                    }
+                });
+        if(decision) {
+            alertDialog.setNegativeButton("NO",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            Utils.dialogNegative();
                         }
-                )*/
-                .create();
+                    });
+        }
+        return alertDialog.create();
     }
 
 

@@ -127,7 +127,7 @@ public class CalendarController {
     public Cursor GetSubjects(Context ctx) {
         // Specify the date range you want to search for recurring
         // event instances
-        Calendar beginTime = Calendar.getInstance();
+                Calendar beginTime = Calendar.getInstance();
         beginTime.set(2020, 4, 5, 0, 0);
         long startMillis = beginTime.getTimeInMillis();
         Calendar endTime = Calendar.getInstance();
@@ -139,7 +139,7 @@ public class CalendarController {
 
         // The ID of the recurring event whose instances you are searching
         // for in the Instances table
-        //String selection = CalendarContract.Instances.EVENT_ID + " = ?";
+       // String selection = CalendarContract.Events.STATUS + " = ?";
         //String[] selectionArgs = new String[] {"207"};
 
         // Construct the query with the desired date range.
@@ -156,6 +156,16 @@ public class CalendarController {
 
         return cur;
     }
+
+    public void CancelSubject(Context ctx, Long id){
+        ContentResolver cr = ctx.getContentResolver();
+        ContentValues values = new ContentValues();
+        Uri updateUri = null;
+        values.put(CalendarContract.Events.STATUS,CalendarContract.Events.STATUS_CANCELED);
+        updateUri = ContentUris.withAppendedId(CalendarContract.Events.CONTENT_URI, id);
+        cr.update(updateUri, values, null,null);
+    }
+
 
 
 }
