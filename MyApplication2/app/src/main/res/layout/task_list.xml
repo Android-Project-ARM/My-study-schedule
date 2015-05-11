@@ -1,25 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <LinearLayout
+        android:id="@+id/thumbnail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="5dip"
+        android:padding="3dip" >
+        <ImageView
+            android:id="@+id/list_image"
+            android:contentDescription="@string/app_name"
+            android:layout_width="@dimen/imgAsignatura"
+            android:layout_height="@dimen/imgAsignatura"
+            android:src="@drawable/ic_action_paste"
+            />
+    </LinearLayout>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="75dip"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/ElementTarea"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
+        android:paddingTop="@dimen/topPadding"
+        android:text="hola"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/ElementTareaFecha"
         android:layout_below="@+id/ElementTarea"
         android:layout_alignLeft="@+id/ElementTarea"
-        android:layout_alignStart="@+id/ElementTarea" />
+        android:layout_centerHorizontal="true"
+        android:id="@+id/ElementTareaFecha"
+        android:text="hola"
+        />
 
 
-</LinearLayout>
+</RelativeLayout>
