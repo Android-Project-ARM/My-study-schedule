@@ -9,10 +9,6 @@
     android:animateLayoutChanges="true"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
 
         <TextView
         android:layout_width="wrap_content"
@@ -35,12 +31,9 @@
             android:text="@string/TvDone"
             android:id="@+id/TvDone" />
 
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -52,12 +45,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/SnAsignatura"/>
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -72,12 +62,7 @@
         android:id="@+id/EtFechaTarea"
         android:hint="dd/mm/aaaa"
         android:inputType="date" />
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -89,7 +74,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/RatingTarea" />
-    </LinearLayout>
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -98,10 +83,7 @@
         android:text="@string/TvDesTarea"
         android:id="@+id/TvDesTarea"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -110,6 +92,5 @@
         android:id="@+id/EtDescTarea"
         android:lines="5"
         android:maxLines="5" />
-    </LinearLayout>
 
 </LinearLayout>

@@ -49,6 +49,9 @@
     <string name="no_subjects_yet">No hi ha assignatures disponibles</string>
     <string name="in_development">En desenvolupament</string>
     <string name="under">Actualment l\'equip de MyStudySchedule està treballant en el desenvolupament d\'aquesta funció.</string>
-    <string name="deleteSubject">Estàs segur uqe vols borrar aquetsa assignatura?</string>
+    <string name="deleteSubject">Estàs segur que vols borrar aquetsa assignatura? (Totes les tasques que estiguin assignades a aquesta assignatura serán borrades)</string>
+    <string name="startTime">Hora de inici</string>
+    <string name="endTime">Hora de finalització</string>
+    <string name="weekDay">Día</string>
 
 </resources>

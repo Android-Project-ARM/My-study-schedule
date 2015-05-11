@@ -125,4 +125,13 @@ public class DBProxy extends SQLiteOpenHelper {
         String[] selectionArgs = { String.valueOf(id) };
         db.update(DB_TASK_TABLE_NAME,values,selection,selectionArgs);
     }
+
+    public void DeleteSubjectTasks(Long subjectId)
+    {
+        SQLiteDatabase db = getWritableDatabase();
+
+        String selection = DB_TASK_COL_SUBJECT_ID + " LIKE ?";
+        String[] selectionArgs = { String.valueOf(subjectId) };
+        db.delete(DB_TASK_TABLE_NAME,selection,selectionArgs);
+    }
 }

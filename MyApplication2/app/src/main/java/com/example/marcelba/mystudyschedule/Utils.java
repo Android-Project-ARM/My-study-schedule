@@ -1,8 +1,11 @@
 package com.example.marcelba.mystudyschedule;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Window;
 
 import java.util.Calendar;
 
@@ -76,6 +79,7 @@ public class Utils {
     public static void ShowDialog(Activity basecaller,int message, boolean decision){
         DialogMessage newFragment = DialogMessage.newInstance(message, decision);
         newFragment.show(basecaller.getFragmentManager(), "dialog");
+        newFragment.getFragmentManager().executePendingTransactions();
     }
 
     public static void dialogPositive() {

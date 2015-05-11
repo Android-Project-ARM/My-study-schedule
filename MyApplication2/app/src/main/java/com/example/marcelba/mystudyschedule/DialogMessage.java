@@ -30,7 +30,8 @@ public class DialogMessage extends DialogFragment {
         final boolean decision = getArguments().getBoolean("decision");
 
         AlertDialog.Builder alertDialog =  new AlertDialog.Builder(getActivity());
-        alertDialog.setTitle(message);
+       // alertDialog.setTitle(message);
+        alertDialog.setMessage(message);
         alertDialog.setPositiveButton("OK",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {

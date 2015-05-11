@@ -102,6 +102,7 @@ public class Subjects extends ActionBarActivity implements AdapterView.OnItemLon
 
     public void DeleteCurrentSubject(){
         cal.CancelSubject(this, lastId);
+        Inicio.db.DeleteSubjectTasks(lastId);
         GenerateListView();
     }
 }

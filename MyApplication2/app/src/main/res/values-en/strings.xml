@@ -50,6 +50,9 @@
     <string name="no_subjects_yet">No subjects available</string>
     <string name="in_development">Developing</string>
     <string name="under">MyStudySchedule team currently is working on the development of this function.</string>
-    <string name="deleteSubject">Are you sure you want delete this subject?</string>
+    <string name="deleteSubject">Are you sure you want delete this subject? (All the tasks assigned to this subject will be deleted)</string>
+    <string name="startTime">Start time</string>
+    <string name="endTime">End time</string>
+    <string name="weekDay">Day</string>
 
 </resources>
