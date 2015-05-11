@@ -7,7 +7,84 @@
     tools:context="com.example.marcelba.mystudyschedule.Settings"
     android:animateLayoutChanges="true">
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/app_name"
+        android:id="@+id/TvAppName"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/TvTeam"
+        android:id="@+id/TvTeam"
+        android:gravity="right"
+        android:layout_below="@+id/TvAppName"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+    <ImageView
+    android:layout_width="150dp"
+    android:layout_height="150dp"
+    android:id="@+id/Foto01"
+    android:background="@drawable/mar"
+    android:layout_above="@+id/TvMember01"
+    android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/TvMember01"
+        android:id="@+id/TvMember01"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/imageView2"
+        android:layout_marginTop="27dp"
+        android:background="@drawable/rub"
+        android:layout_below="@+id/TvMemberJob01"
+        android:layout_alignLeft="@+id/Foto01"
+        android:layout_alignStart="@+id/Foto01" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/TvMember02"
+        android:id="@+id/TvMember02"
+        android:layout_below="@+id/imageView2"
+        android:layout_alignLeft="@+id/TvMember01"
+        android:layout_alignStart="@+id/TvMember01" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/TvMemberJob01"
+        android:id="@+id/TvMemberJob01"
+        android:layout_below="@+id/TvMember01"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/TvMemberJob01"
+        android:id="@+id/TvMemberJob02"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

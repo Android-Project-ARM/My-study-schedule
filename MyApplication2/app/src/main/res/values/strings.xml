@@ -37,6 +37,17 @@
     <string name="TvPrioridadTarea">Prioridad</string>
     <string name="TvDesTarea">Descripción</string>
 
+    <string name="TvTeam">Equipo</string>
+
+    <string name="TvMember01">Marcel Barros Aparici</string>
+    <string name="TvMember02">Rubén Ruiz Herrera</string>
+
+    <string name="TvMemberJob01">Desarrollador</string>
+
+
+
+
+
     <!-- Stings Botones  -->
     <string name="BtGuardar">Guardar</string>
     <string name="BtNuevaAsignatura">Nueva Asignatura</string>

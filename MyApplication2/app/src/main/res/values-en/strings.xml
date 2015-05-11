@@ -31,6 +31,10 @@
     <string name="TvFechaTarea">Delivery date</string>
     <string name="TvPrioridadTarea">Priority</string>
     <string name="TvDesTarea">Description</string>
+    <string name="TvTeam">Team</string>
+
+    <string name="TvMemberJob01">Developer</string>
+
 
     <!-- Stings Botones  -->
     <string name="BtGuardar">Saver</string>

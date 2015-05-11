@@ -31,6 +31,10 @@
     <string name="TvFechaTarea">Data Lliurament</string>
     <string name="TvPrioridadTarea">Prioritat</string>
     <string name="TvDesTarea">Descripció</string>
+    <string name="TvTeam">Equip</string>
+
+    <string name="TvMemberJob01">Desenvolupador</string>
+
 
     <!-- Stings Botones  -->
     <string name="BtGuardar">Guardar</string>
