@@ -36,9 +36,8 @@
     android:layout_height="150dp"
     android:id="@+id/Foto01"
     android:background="@drawable/mar"
-    android:layout_above="@+id/TvMember01"
-    android:layout_centerHorizontal="true"
-        />
+        android:layout_below="@+id/TvTeam"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -46,28 +45,9 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/TvMember01"
         android:id="@+id/TvMember01"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
-
-    <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:id="@+id/imageView2"
-        android:layout_marginTop="27dp"
-        android:background="@drawable/rub"
-        android:layout_below="@+id/TvMemberJob01"
-        android:layout_alignLeft="@+id/Foto01"
-        android:layout_alignStart="@+id/Foto01" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/TvMember02"
-        android:id="@+id/TvMember02"
-        android:layout_below="@+id/imageView2"
-        android:layout_alignLeft="@+id/TvMember01"
-        android:layout_alignStart="@+id/TvMember01" />
+        android:layout_below="@+id/Foto01"
+        android:layout_alignLeft="@+id/TvMember02"
+        android:layout_alignStart="@+id/TvMember02" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -78,13 +58,34 @@
         android:layout_below="@+id/TvMember01"
         android:layout_centerHorizontal="true" />
 
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/imageView2"
+        android:background="@drawable/rub"
+        android:layout_below="@+id/TvMemberJob01"
+        android:layout_alignLeft="@+id/Foto01"
+        android:layout_alignStart="@+id/Foto01"
+        android:layout_marginTop="26dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/TvMember02"
+        android:id="@+id/TvMember02"
+        android:layout_below="@+id/imageView2"
+        android:layout_alignLeft="@+id/imageView2"
+        android:layout_alignStart="@+id/imageView2" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/TvMemberJob01"
         android:id="@+id/TvMemberJob02"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/TvMember02"
+        android:layout_alignLeft="@+id/TvMemberJob01"
+        android:layout_alignStart="@+id/TvMemberJob01" />
 
 </RelativeLayout>
