@@ -9,6 +9,7 @@
     <dimen name="MarginBotonesHome">5dp</dimen>
     <dimen name="topPadding">5dp</dimen>
     <dimen name="imgAsignatura">50dip</dimen>
+    <dimen name="imgTeamFoto">150dip</dimen>
 
 
 </resources>

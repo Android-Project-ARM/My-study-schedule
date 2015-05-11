@@ -32,10 +32,10 @@
 
 
     <ImageView
-    android:layout_width="150dp"
-    android:layout_height="150dp"
-    android:id="@+id/Foto01"
-    android:background="@drawable/mar"
+        android:layout_width="@dimen/imgTeamFoto"
+        android:layout_height="@dimen/imgTeamFoto"
+        android:id="@+id/Foto01"
+        android:background="@drawable/mar"
         android:layout_below="@+id/TvTeam"
         android:layout_centerHorizontal="true" />
 
@@ -59,8 +59,8 @@
         android:layout_centerHorizontal="true" />
 
     <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="@dimen/imgTeamFoto"
+        android:layout_height="@dimen/imgTeamFoto"
         android:id="@+id/imageView2"
         android:background="@drawable/rub"
         android:layout_below="@+id/TvMemberJob01"
