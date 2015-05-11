@@ -12,7 +12,7 @@
     <string name="evaluation">Evaluation</string>
 
     <!-- Strings title_activity -->
-    <string name="title_activity_ajustes">Setings</string>
+    <string name="title_activity_ajustes">Credits</string>
     <string name="title_activity_horario">Schedule</string>
     <string name="title_activity_asignaturas">Subject</string>
     <string name="title_activity_tareas">Homework</string>
