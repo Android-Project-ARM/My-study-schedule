@@ -12,7 +12,7 @@
     <string name="evaluation">Avaluació</string>
 
     <!-- Strings title_activity -->
-    <string name="title_activity_ajustes">Ajustos</string>
+    <string name="title_activity_ajustes">Credits</string>
     <string name="title_activity_horario">Horari</string>
     <string name="title_activity_asignaturas">Assignatures</string>
     <string name="title_activity_tareas">Tasques</string>
@@ -31,6 +31,10 @@
     <string name="TvFechaTarea">Data Lliurament</string>
     <string name="TvPrioridadTarea">Prioritat</string>
     <string name="TvDesTarea">Descripció</string>
+    <string name="TvTeam">Equip</string>
+
+    <string name="TvMemberJob01">Desenvolupador</string>
+
 
     <!-- Stings Botones  -->
     <string name="BtGuardar">Guardar</string>

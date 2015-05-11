@@ -15,7 +15,7 @@
 
 
     <!-- Strings title_activity -->
-    <string name="title_activity_ajustes">Ajustes</string>
+    <string name="title_activity_ajustes">Creditos</string>
     <string name="title_activity_horario">Horario</string>
     <string name="title_activity_asignaturas">Asignaturas</string>
     <string name="title_activity_tareas">Tareas</string>
@@ -36,6 +36,17 @@
     <string name="TvFechaTarea">Fecha Entrega</string>
     <string name="TvPrioridadTarea">Prioridad</string>
     <string name="TvDesTarea">Descripción</string>
+
+    <string name="TvTeam">Equipo</string>
+
+    <string name="TvMember01">Marcel Barros Aparici</string>
+    <string name="TvMember02">Rubén Ruiz Herrera</string>
+
+    <string name="TvMemberJob01">Desarrollador</string>
+
+
+
+
 
     <!-- Stings Botones  -->
     <string name="BtGuardar">Guardar</string>
