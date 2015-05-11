@@ -68,5 +68,7 @@
     <string name="startTime">Hora de inicio</string>
     <string name="endTime">Hora de finalización</string>
     <string name="weekDay">Día</string>
+    <string name="firstTimeSubjects">false</string>
+    <string name="howDeleteSubject">Para eliminar una asignatura mantenla pulsada durante unos segundos</string>
 
 </resources>

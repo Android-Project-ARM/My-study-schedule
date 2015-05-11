@@ -54,5 +54,6 @@
     <string name="startTime">Start time</string>
     <string name="endTime">End time</string>
     <string name="weekDay">Day</string>
+    <string name="howDeleteSubject">To delete a subject keep it pressed during a few seconds</string>
 
 </resources>

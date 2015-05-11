@@ -53,5 +53,6 @@
     <string name="startTime">Hora de inici</string>
     <string name="endTime">Hora de finalització</string>
     <string name="weekDay">Día</string>
+    <string name="howDeleteSubject">Per tal de eliminar una assignatura mantela polsada durant uns segons</string>
 
 </resources>

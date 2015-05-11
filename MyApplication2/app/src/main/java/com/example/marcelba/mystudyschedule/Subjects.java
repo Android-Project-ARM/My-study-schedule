@@ -2,6 +2,7 @@ package com.example.marcelba.mystudyschedule;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.provider.CalendarContract;
@@ -31,8 +32,14 @@ public class Subjects extends ActionBarActivity implements AdapterView.OnItemLon
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_asignaturas);
 
-        GenerateListView();
-
+        boolean thereAreSubjects = GenerateListView();
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        boolean firstTime = sharedPref.getBoolean(getString(R.string.firstTimeSubjects), true);
+        if(firstTime && thereAreSubjects){
+            Utils.ShowDialog(this,R.string.howDeleteSubject,false);SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putBoolean(getString(R.string.firstTimeSubjects), false);
+            editor.commit();
+        }
         // TextView et;
         //for (int i = 0; i < subjectList.getCount(); i++) {
         // et = (TextView) subjectList.getChildAt(i).findViewById(R.id.SubjectDay);
@@ -80,7 +87,7 @@ public class Subjects extends ActionBarActivity implements AdapterView.OnItemLon
         return false;
     }
 
-    private void GenerateListView()
+    private boolean GenerateListView()
     {
         Cursor c = cal.GetSubjects(this);
 
@@ -97,6 +104,7 @@ public class Subjects extends ActionBarActivity implements AdapterView.OnItemLon
         subjectList = (ListView) findViewById(R.id.listSubjectView);
         subjectList.setAdapter(subjectsAdapter);
         subjectList.setOnItemLongClickListener(this);
+        return c.getCount()!=0;
     }
 
 
