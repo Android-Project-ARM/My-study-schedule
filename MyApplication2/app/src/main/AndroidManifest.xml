@@ -53,7 +53,8 @@
         <activity
             android:name=".NewTask"
             android:label="@string/title_activity_nueva_tarea"
-            android:parentActivityName=".Tasks">
+            android:parentActivityName=".Tasks"
+            android:noHistory="true">
         </activity>
     </application>
 

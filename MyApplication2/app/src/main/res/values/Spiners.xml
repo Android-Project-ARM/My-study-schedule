@@ -5,13 +5,13 @@
 
     <!-- Dias de la semana -->
     <string-array name="Dias">
-        <item>Lunes</item>
-        <item>Martes</item>
-        <item>Miercoles</item>
-        <item>Jueves</item>
-        <item>Viernes</item>
-        <item>Sabado</item>
-        <item>Domingo</item>
+        <item>Monday</item>
+        <item>Thursday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
 
     </string-array>
 
@@ -41,7 +41,6 @@
         <item>21</item>
         <item>22</item>
         <item>23</item>
-        <item>24</item>
     </string-array>
 
     <!-- Minutos -->
